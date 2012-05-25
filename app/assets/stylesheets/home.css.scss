@@ -1,0 +1,96 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#hurting {
+  margin-bottom: 25px;
+  
+  h2 {
+    color: #4e4e4e;
+    text-align: center;    
+    .red {
+      font-weight: 400;
+    }
+  }
+}
+
+#hurting-list {
+  .item {
+    font-size: 20px;
+    font-weight: 300;
+    font-family: $title-font;
+    width: 217px;
+    text-align: center;
+    float: left;
+    margin-bottom: 25px;
+    
+    p {
+      line-height: 25px;    
+    }
+    
+    img {
+      display: block;
+      width: 90px;
+      height: 90px;
+      margin: auto;
+      margin-bottom: 12px;
+    }    
+  }
+}
+
+#how-we-work {
+  h3 {
+    text-align: center;
+  }
+  
+  .col1 {
+    width: 510px;
+    margin-right: 25px;
+    float: left;
+  }
+  
+  .col2 {
+    width: 310px;
+    margin-left: 25px;
+    float: left;    
+  }
+}
+
+.item span {
+  @include inline-block;
+  padding-bottom: 5px;  
+  width: 90px;
+  height: 90px;
+}
+
+.slow-computer {
+  background: url('/assets/categories/slow_computer.gif') no-repeat;
+}
+
+.android {
+  background: url('/assets/categories/android.gif') no-repeat;
+}
+
+.apple {
+  background: url('/assets/categories/apple.gif') no-repeat;
+}
+
+.older-generation {
+  background: url('/assets/categories/cane.gif') no-repeat;
+}
+
+.wireless {
+  background: url('/assets/categories/wireless.gif') no-repeat;
+}
+
+.internet {
+  background: url('/assets/categories/internet.gif') no-repeat;  
+}
+
+.routers {
+  background: url('/assets/categories/routers.gif') no-repeat;
+}
+
+.up-to-date {
+  background: url('/assets/categories/up-to-date.gif') no-repeat;  
+}

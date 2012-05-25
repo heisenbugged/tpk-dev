@@ -10,7 +10,10 @@ gem 'mysql2'
 gem "simple_form"
 gem "inherited_resources"
 gem "devise"
+gem 'bourbon'
+gem "haml"
 
+gem "fabrication"
 gem "rspec-rails", :group => [:test, :development]
 group :test do
   gem "capybara"

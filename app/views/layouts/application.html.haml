@@ -1,0 +1,38 @@
+!!!
+%html
+  %head
+    %title Technology Painkillers    
+    <link href='http://fonts.googleapis.com/css?family=Quicksand:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  
+  %body
+    #header
+      #logo
+        = image_tag 'logo.png'
+      #menu
+        %ul
+          %li HOME
+          %li MENU ITEM
+          %li LOGIN
+          
+    
+    #banner
+      .content
+        %h1
+          We're an alliance of <span class="yellow">service providers</span>
+          and <span class="red">developers</span> who try to take the pain 
+          out of technology.
+          
+        #founder-image
+          = image_tag 'mikeplaceholder.png'
+          
+    #body
+      #main-content
+        = yield
+        
+    #footer
+      .content
+        %h1 This footer is empty

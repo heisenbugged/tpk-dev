@@ -1,0 +1,165 @@
+/* -- Global Styles -- */
+$header-font: 'Quicksand', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$title-font: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+$body-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+body {
+  background: #e4e4e4;
+  font-size: 14px;
+  font-family: $body-font;
+  color: #333;
+}
+
+p {
+  line-height: 19px;
+}
+
+h1 {
+  font-family: $header-font;
+  font-size: 35px;
+}
+
+h2 {
+  font-family: $title-font;
+  font-weight: 300;
+  font-size: 26px;
+  margin-bottom: 25px;
+}
+
+h3 {
+  font-family: $title-font;
+  font-weight: 300;  
+  font-size: 21px;
+  padding-bottom: 12px;
+}
+
+h2.bold {
+  font-weight: 600;
+  color: #565656; 
+}
+
+span.yellow {
+  color: #f5c106;
+}
+
+span.red {
+  color: #ff6a6f;
+}
+
+.orange {
+  color: #ed8f09;
+}
+
+.centered {
+  text-align: center;
+}
+
+.whitebox {
+  padding: 25px;
+  background: white;
+  border-radius: 10px;
+}
+
+#header {
+  background: url('/assets/header_bg.png');
+  height: 140px;
+  width: 920px;
+  margin: auto;
+  padding: 10px;
+}
+
+#logo {
+  float: left;
+  background: white;
+  width: 187px;
+  height: 102px;  
+  padding: 15px;
+  border: 1px solid rgba(0, 0, 0, .1);
+  -webkit-background-clip: padding-box; /* for Safari */
+   background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */ 
+}
+
+#menu {
+  float: left;
+  width: 701px;
+  height: 35px;
+  background: #b62227;
+  margin-top: 47px;
+  
+  -moz-box-shadow: 3px 3px 7px #c1c1c1;
+  -webkit-box-shadow: 3px 3px 7px #c1c1c1;
+  box-shadow: 3px 3px 7px #c1c1c1;
+  
+  ul {
+    font-family: $header-font;
+    color: white;
+    font-size: 24px;
+    line-height: 35px;
+    float: right;
+    
+    li {
+      float: left;
+      padding: 0px 10px;
+      border-left: 2px solid #ccc;
+    }
+  }
+}
+
+#banner {
+  border: 1px solid rgba(0, 0, 0, .1);
+  height: 330px;  
+  @include linear-gradient(rgb(46,46,46), rgb(31,31,31));
+  
+  h1 {
+    position: absolute;
+    width: 425px;
+    top: 45px;
+    color: white;
+    font-size: 45px;  
+    font-weight: 300;
+    letter-spacing: -2px;    
+  }
+  
+  .content {
+    position: relative;  
+    width: 920px;
+    margin: auto;
+    height: 330px;    
+  }
+}
+
+
+#founder-image {
+  position: absolute;
+  right: 0px;
+  top: 15px;
+  height: 369px;
+  
+  @include box-shadow(6px 6px 15px rgba(0,0,0,.3));
+}
+
+#body {
+  background: url('/assets/main_bg.png');
+}
+
+#main-content {
+  margin: auto;
+  width: 920px;
+  /* 
+     60px of this padding is to compensate for top image overflowing past black header area.
+  */
+  padding-top: 85px;
+  padding-bottom: 40px;
+}
+
+#footer {
+  @include box-shadow(inset 0px 6px 5px rgba(0,0,0,.3));
+  background-color: #2a2a2a;
+  height: 300px;
+  
+  .content {
+    padding: 40px;
+    color: white;
+  }
+}
+
