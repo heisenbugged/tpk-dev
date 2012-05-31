@@ -15,7 +15,11 @@ gem "haml"
 
 gem "fabrication"
 gem "rspec-rails", :group => [:test, :development]
-group :test do
+
+gem "guard"
+gem "guard-spork"
+
+group :test do  
   gem "capybara"
   gem "guard-rspec"
 end
