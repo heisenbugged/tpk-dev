@@ -8,7 +8,7 @@ describe Address do
     @affiliate = Affiliate.create!(:company_name => "Technology Painkillers")
     @affiliate.addresses << @address
     @affiliate.save!
-
+    # Test Count
     @affiliate.addresses.count.should == 1
     @address.addressable_type.should == "Affiliate"
     @address.addressable_id.should == @affiliate.id
