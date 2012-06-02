@@ -5,7 +5,7 @@ describe Address do
 
   it "should associate with affiliates through addressable" do
     @address = Address.new(:street_line_1 => "123 Main St", :city => "Austin" , :state =>"TX", :zip => "78717")
-    @affiliate = Affiliate.create!(:company_name => "Technology Painkillers")
+    @affiliate = Affiliate.new(:company_name => "Technology Painkillers")
     @affiliate.addresses << @address
     @affiliate.save!
     # Test Count

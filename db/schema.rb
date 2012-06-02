@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120530180315) do
+ActiveRecord::Schema.define(:version => 20120602005103) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street_line_1"
@@ -27,20 +27,32 @@ ActiveRecord::Schema.define(:version => 20120530180315) do
 
   create_table "affiliates", :force => true do |t|
     t.string   "company_name"
+    t.boolean  "bonded"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
 
   create_table "certifications", :force => true do |t|
     t.string   "cert_name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "affiliate_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "it_services", :force => true do |t|
     t.string   "service_name"
+    t.integer  "affiliate_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "phones", :force => true do |t|
+    t.string   "number"
+    t.string   "ph_type"
+    t.integer  "phoneable_id"
+    t.string   "phoneable_type"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "problem_categories", :force => true do |t|
