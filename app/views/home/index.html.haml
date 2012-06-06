@@ -4,8 +4,8 @@
   #hurting-list.clearfix
     - @categories.each do |category|
       .item
-        %span{class: category[:class]}
-        %p= category[:title]
+        %span{class: category.css_class}
+        %p= category.name
   
   .get-help
     %button Get Help

@@ -74,85 +74,35 @@
 .item {
   color: #999;
   
-  span {
-    @include inline-block;
+  span { 
+    @include inline-block; 
     width: 90px;
     height: 90px;
-    background: url('/assets/categories_sprite.png') no-repeat;    
-  }
-  
-  .slow-computer {
-    @include category_sprite(0,0);
-  }
-  
-  .android {
-    @include category_sprite(0,1);
-  }
-
-  .apple {
-    @include category_sprite(0,2);
-  }
-
-  .older-generation {
-    @include category_sprite(0,3);
-  }
-
-  .wireless {
-    @include category_sprite(1,0);
-  }
-
-  .internet {
-    @include category_sprite(1,1);
-  }
-
-  .routers {
-    @include category_sprite(1,2);
-  }
-
-  .up-to-date {
-    @include category_sprite(1,3);
-  }
+    background: url('/assets/categories_sprite.png') no-repeat;
+  }   
+      
+  .slow-computer { @include category_sprite(0,0); &.red { @include category_sprite(0,0, 'red'); }}
+  .android { @include category_sprite(0,1); &.red { @include category_sprite(0,1, 'red'); }}
+  .apple { @include category_sprite(0,2); &.red { @include category_sprite(0,2, 'red'); }}
+  .older-generation { @include category_sprite(0,3); &.red { @include category_sprite(0,3, 'red'); }}
+  .wireless { @include category_sprite(1,0); &.red { @include category_sprite(1,0, 'red'); }}
+  .internet { @include category_sprite(1,1); &.red { @include category_sprite(1,1, 'red'); }}
+  .routers { @include category_sprite(1,2); &.red { @include category_sprite(1,2, 'red'); }}
+  .up-to-date { @include category_sprite(1,3); &.red { @include category_sprite(1,3, 'red'); }}
   
   &.selected {
-    p {
-      color: #333;
-    }
-    
-    .slow-computer {
-      @include category_sprite(0,0, 'yellow');
-    }
-
-    .android {
-      @include category_sprite(0,1, 'yellow');
-    }
-
-    .apple {
-      @include category_sprite(0,2, 'yellow');
-    }
-
-    .older-generation {
-      @include category_sprite(0,3, 'yellow');
-    }
-
-    .wireless {
-      @include category_sprite(1,0, 'yellow');
-    }
-
-    .internet {
-      @include category_sprite(1,1, 'yellow');
-    }
-
-    .routers {
-      @include category_sprite(1,2, 'yellow');
-    }
-
-    .up-to-date {
-      @include category_sprite(1,3, 'yellow');
-    }
-    
+    p { color: #333; }    
+    .slow-computer { @include category_sprite(0,0, 'yellow'); }
+    .android { @include category_sprite(0,1, 'yellow'); }
+    .apple { @include category_sprite(0,2, 'yellow'); }
+    .older-generation { @include category_sprite(0,3, 'yellow')  }
+    .wireless { @include category_sprite(1,0, 'yellow'); }
+    .internet { @include category_sprite(1,1, 'yellow'); }
+    .routers { @include category_sprite(1,2, 'yellow'); }
+    .up-to-date { @include category_sprite(1,3, 'yellow'); }  
   }
-   
 }
+
 
 
 .get-help {
@@ -167,4 +117,34 @@
     font-weight: 400;
   }
 }
+
+#identify-problems {
+  h2 {
+    text-align: center;
+  }
+  
+  .numeration {
+    font-style: italic;
+    text-align: center;
+    font-size: 18px;
+    color: #999;
+    margin-bottom: 10px;
+  }
+  
+  .banner {
+    height: 50px;
+    line-height: 50px;    
+    background: #b82a2f;
+    color: white;  
+    
+    h1 {
+      font-family: $title-font;
+      font-size: 28px;
+      padding-left: 40px;
+      font-weight: 300;
+    }
+  }
+    
+}
+
 

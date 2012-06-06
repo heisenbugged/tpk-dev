@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+ProblemCategory.create([{ category_name: "Slow Computer",                           css_class: "slow-computer"},
+                        { category_name: "Android Problems",                        css_class: "android"},
+                        { category_name: "iPhone & iPad Problems",                  css_class: "apple"},
+                        { category_name: "Helping the Older Generation",            css_class: "older-generation"},
+                        { category_name: "Wireless Networks",                       css_class: "wireless"},
+                        { category_name: "Internet Access",                         css_class: "internet"},
+                        { category_name: "Routers",                                 css_class: "routers"},
+                        { category_name: "Keeping Systems and Software Up to Date", css_class: "up-to-date"}
+                        ])
