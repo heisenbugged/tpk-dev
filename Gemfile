@@ -12,6 +12,7 @@ gem "inherited_resources"
 gem "devise"
 gem 'bourbon'
 gem "haml"
+gem "activeadmin"
 
 gem "fabrication"
 gem "rspec-rails", :group => [:test, :development]

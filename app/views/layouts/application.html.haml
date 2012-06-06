@@ -2,7 +2,7 @@
 %html
   %head
     %title Technology Painkillers    
-    <link href='http://fonts.googleapis.com/css?family=Quicksand:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Quicksand:400,400italic,300,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
@@ -30,7 +30,10 @@
           = image_tag 'mikeplaceholder.png'
           
     #body
-      #main-content
+      #main-content      
+        %p.notice= notice
+        %p.alert= alert
+
         = yield
         
     #footer
