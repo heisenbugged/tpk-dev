@@ -4,4 +4,6 @@ class ProblemCategory < ActiveRecord::Base
   def name
     category_name
   end
+
+  has_many :problem_details
 end

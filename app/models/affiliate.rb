@@ -5,4 +5,5 @@ class Affiliate < ActiveRecord::Base
   has_many :phones, :as => :phoneable
   has_many :it_services
   has_many :certifications
+  has_many :skills
 end

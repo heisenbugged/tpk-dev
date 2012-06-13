@@ -1,0 +1,120 @@
+** Invoke db:migrate:reset (first_time)
+** Invoke db:drop (first_time)
+** Invoke db:load_config (first_time)
+** Invoke rails_env (first_time)
+** Execute rails_env
+** Execute db:load_config
+** Execute db:drop
+** Invoke db:create (first_time)
+** Invoke db:load_config 
+** Execute db:create
+** Invoke db:migrate (first_time)
+** Invoke environment (first_time)
+** Execute environment
+** Invoke db:load_config 
+** Execute db:migrate
+** Invoke db:_dump (first_time)
+** Execute db:_dump
+** Invoke db:schema:dump (first_time)
+** Invoke environment 
+** Invoke db:load_config 
+** Execute db:schema:dump
+** Execute db:migrate:reset
+==  CreateAffiliates: migrating ===============================================
+-- create_table(:affiliates)
+   -> 0.1341s
+==  CreateAffiliates: migrated (0.1342s) ======================================
+
+==  CreateProblemCategories: migrating ========================================
+-- create_table(:problem_categories)
+   -> 0.1487s
+==  CreateProblemCategories: migrated (0.1488s) ===============================
+
+==  CreateItServices: migrating ===============================================
+-- create_table(:it_services)
+   -> 0.1315s
+==  CreateItServices: migrated (0.1316s) ======================================
+
+==  CreateCertifications: migrating ===========================================
+-- create_table(:certifications)
+   -> 0.1314s
+==  CreateCertifications: migrated (0.1315s) ==================================
+
+==  CreateAddresses: migrating ================================================
+-- create_table(:addresses)
+   -> 0.1068s
+==  CreateAddresses: migrated (0.1068s) =======================================
+
+==  CreatePhones: migrating ===================================================
+-- create_table(:phones)
+   -> 0.0991s
+==  CreatePhones: migrated (0.0992s) ==========================================
+
+==  CreateAdminNotes: migrating ===============================================
+-- create_table(:admin_notes)
+   -> 0.0981s
+-- add_index(:admin_notes, [:resource_type, :resource_id])
+   -> 0.1284s
+-- add_index(:admin_notes, [:admin_user_type, :admin_user_id])
+   -> 0.0991s
+==  CreateAdminNotes: migrated (0.3259s) ======================================
+
+==  MoveAdminNotesToComments: migrating =======================================
+-- remove_index(:admin_notes, [:admin_user_type, :admin_user_id])
+   -> 0.0973s
+-- rename_table(:admin_notes, :active_admin_comments)
+   -> 0.0014s
+-- rename_column(:active_admin_comments, :admin_user_type, :author_type)
+   -> 0.1146s
+-- rename_column(:active_admin_comments, :admin_user_id, :author_id)
+   -> 0.1009s
+-- add_column(:active_admin_comments, :namespace, :string)
+   -> 0.1328s
+-- add_index(:active_admin_comments, [:namespace])
+   -> 0.1841s
+-- add_index(:active_admin_comments, [:author_type, :author_id])
+   -> 0.1344s
+-- Updating any existing comments to the admin namespace.
+-- execute("UPDATE active_admin_comments SET namespace='admin'")
+   -> 0.0005s
+==  MoveAdminNotesToComments: migrated (0.7666s) ==============================
+
+==  DeviseCreateAdminUsers: migrating =========================================
+-- create_table(:admin_users)
+   -> 0.0911s
+-- add_index(:admin_users, :email, {:unique=>true})
+   -> 0.0864s
+-- add_index(:admin_users, :reset_password_token, {:unique=>true})
+   -> 0.1420s
+==  DeviseCreateAdminUsers: migrated (0.4300s) ================================
+
+==  CreateSkills: migrating ===================================================
+-- create_table(:skills)
+   -> 0.0769s
+==  CreateSkills: migrated (0.0770s) ==========================================
+
+==  CreateReviewers: migrating ================================================
+-- create_table(:reviewers)
+   -> 0.1068s
+==  CreateReviewers: migrated (0.1069s) =======================================
+
+==  CreateReviews: migrating ==================================================
+-- create_table(:reviews)
+   -> 0.1058s
+==  CreateReviews: migrated (0.1059s) =========================================
+
+==  CreateProblemDetails: migrating ===========================================
+-- create_table(:problem_details)
+   -> 0.1068s
+==  CreateProblemDetails: migrated (0.1068s) ==================================
+
+==  CreateCustomers: migrating ================================================
+-- create_table(:customers)
+   -> 0.0987s
+==  CreateCustomers: migrated (0.0988s) =======================================
+
+==  CreateReferrals: migrating ================================================
+-- create_table(:referrals)
+   -> 0.0978s
+==  CreateReferrals: migrated (0.0979s) =======================================
+
