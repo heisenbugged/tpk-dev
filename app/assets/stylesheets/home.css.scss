@@ -109,7 +109,7 @@
   width: 125px;
   margin: 0px auto;
   
-  button {
+  button, input[type='submit'] {
     @include button(#db4a46);
     @include border-radius(5px);  
     font-family: $title-font;

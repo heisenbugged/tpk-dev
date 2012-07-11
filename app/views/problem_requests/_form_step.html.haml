@@ -1,0 +1,10 @@
+#identify-problems.whitebox
+  .numeration 1 of 10
+  %h2 
+    Identify the <span class="orange">Problems</span>
+
+  .banner
+    %h1 Android
+
+  = f.submit "Back", :name => "back_button" unless @problem_request.first_step?
+  = f.submit "Next"

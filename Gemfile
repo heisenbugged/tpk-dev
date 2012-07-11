@@ -20,6 +20,8 @@ gem "rspec-rails", :group => [:test, :development]
 gem "guard"
 gem "guard-spork"
 
+gem "pry", :group => :development
+
 group :test do  
   gem "capybara"
   gem "guard-rspec"

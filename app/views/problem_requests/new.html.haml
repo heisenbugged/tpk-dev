@@ -1,14 +1,5 @@
-#hurting.whitebox
-  %h2 Where are you <span class="red">hurting?</span>
-
-  #hurting-list.clearfix
-    - @categories.each do |category|
-      .item{:'data-id' => category.id}
-        %span{class: category.css_class}
-        %p= category.name
-  
-  .get-help
-    %button#get-help-btn Get Help
+= simple_form_for @problem_request do |f|
+  = render "#{@problem_request.current_step}_step", :f => f
 
 %h2.bold.centered How do we work?
 #how-we-work.whitebox.clearfix

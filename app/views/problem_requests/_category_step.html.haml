@@ -1,0 +1,13 @@
+#hurting.whitebox
+  %h2 Where are you <span class="red">hurting?</span>
+
+  #hurting-list.clearfix
+    - @categories.each do |category|
+      .item{:'data-id' => category.id}
+        %span{class: category.css_class}
+        %p= category.name
+  
+  .get-help
+    = f.submit "Get Help", :id => "get-help-btn"    
+    = f.submit "Back", :name => "back_button" unless @problem_request.first_step?
+    //%button#get-help-btn Get Help
