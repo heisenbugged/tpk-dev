@@ -15,3 +15,14 @@ ProblemCategory.create([{ category_name: "Slow Computer",                       
                         { category_name: "Routers",                                 css_class: "routers"},
                         { category_name: "Keeping Systems and Software Up to Date", css_class: "up-to-date"}
                         ])
+
+# Generate Sample Problem Details                        
+ProblemCategory.all.each do |category|
+  10.times { |i|
+    p = ProblemDetail.new(:name => "Problem #{i}")
+    category.problem_details << p
+    3.times { |j|
+      p.skills << Skill.new(:name => "#{category.name}_skill_#{j}_#{p.name}")
+    }
+  }
+end

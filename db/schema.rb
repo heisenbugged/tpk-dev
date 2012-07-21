@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120711190223) do
+ActiveRecord::Schema.define(:version => 20120721012119) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -102,15 +102,36 @@ ActiveRecord::Schema.define(:version => 20120711190223) do
     t.datetime "updated_at",    :null => false
   end
 
+  create_table "problem_categories_problem_requests", :id => false, :force => true do |t|
+    t.integer "problem_category_id"
+    t.integer "problem_request_id"
+  end
+
   create_table "problem_details", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "problem_category_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "problem_details_problem_requests", :id => false, :force => true do |t|
+    t.integer "problem_detail_id"
+    t.integer "problem_request_id"
+  end
+
+  create_table "problem_details_skills", :id => false, :force => true do |t|
+    t.integer "problem_detail_id"
+    t.integer "skill_id"
   end
 
   create_table "problem_requests", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "full_name"
+    t.string   "email"
+    t.string   "phone"
+    t.integer  "zip"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "referrals", :force => true do |t|

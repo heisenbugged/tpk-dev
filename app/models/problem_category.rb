@@ -5,5 +5,6 @@ class ProblemCategory < ActiveRecord::Base
     category_name
   end
 
+  has_and_belongs_to_many :problem_requests
   has_many :problem_details
 end

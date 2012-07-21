@@ -1,3 +1,135 @@
 // Place all the styles related to the ProblemRequests controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#hurting {
+  margin-bottom: 25px;
+  h2 {
+    color: #4e4e4e;
+    text-align: center;    
+    .red {
+      font-weight: 400;
+    }
+  }
+}
+
+.category-form  {  
+  width: 700px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+
+#identify-problems {  
+  margin-bottom: 25px;
+  
+  h2 {
+    text-align: center;
+  }
+  
+  .numeration {
+    font-style: italic;
+    text-align: center;
+    font-size: 18px;
+    color: #999;
+    margin-bottom: 10px;
+  }
+  
+  .banner {
+    height: 50px;
+    line-height: 50px;    
+    background: #b82a2f;
+    color: white;  
+    
+    h1 {
+      font-family: $title-font;
+      font-size: 28px;
+      padding-left: 40px;
+      font-weight: 300;
+    }
+  }
+  
+  .input.text {
+    width: 600px;
+    margin: auto;
+    margin-bottom: 20px;
+    
+    textarea {
+      width: 100%;
+      height: 70px;
+    }
+  }
+  
+  .contact-info {
+    font-size: 18px;
+    width: 450px;
+    margin: auto;
+    
+    span.error {
+      display: inline-block;
+    }
+    
+    .input {
+      margin-bottom: 10px;
+    }
+    
+    label {
+      display: inline-block;
+      min-width: 110px;
+    }
+    
+    input {
+      display: block;
+      font-size: 18px;
+      border: 1px solid #999;
+      border-radius: 5px;
+    }
+  }
+}
+
+.form-submits {
+  text-align: center;
+}
+
+#hurting-list {
+  .item {
+    font-size: 20px;
+    font-weight: 300;
+    font-family: $title-font;
+    width: 217px;
+    text-align: center;
+    float: left;
+    margin-bottom: 25px;
+    
+    p {
+      line-height: 25px;    
+    }
+    
+    img {
+      display: block;
+      width: 90px;
+      height: 90px;
+      margin: auto;
+      margin-bottom: 12px;
+    }    
+  }
+}
+
+.problem-detail-list {
+  width: 600px;
+  margin: auto;
+  margin-top: 20px;
+  
+  span {
+    width: 50%;
+    float: left;
+    height: 30px;
+  }
+}
+
+
+span.error {
+  @include error;
+  font-size: 13px;
+}

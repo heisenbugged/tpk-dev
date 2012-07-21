@@ -2,42 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#hurting {
-  margin-bottom: 25px;
-  
-  h2 {
-    color: #4e4e4e;
-    text-align: center;    
-    .red {
-      font-weight: 400;
-    }
-  }
-}
-
-#hurting-list {
-  .item {
-    font-size: 20px;
-    font-weight: 300;
-    font-family: $title-font;
-    width: 217px;
-    text-align: center;
-    float: left;
-    margin-bottom: 25px;
-    
-    p {
-      line-height: 25px;    
-    }
-    
-    img {
-      display: block;
-      width: 90px;
-      height: 90px;
-      margin: auto;
-      margin-bottom: 12px;
-    }    
-  }
-}
-
 #how-we-work {
   h3 {
     text-align: center;
@@ -74,6 +38,10 @@
 .item {
   color: #999;
   
+  input[type='checkbox'] {
+    display: none;
+  }
+  
   span { 
     @include inline-block; 
     width: 90px;
@@ -108,43 +76,4 @@
 .get-help {
   width: 125px;
   margin: 0px auto;
-  
-  button, input[type='submit'] {
-    @include button(#db4a46);
-    @include border-radius(5px);  
-    font-family: $title-font;
-    font-size: 20px;
-    font-weight: 400;
-  }
 }
-
-#identify-problems {
-  h2 {
-    text-align: center;
-  }
-  
-  .numeration {
-    font-style: italic;
-    text-align: center;
-    font-size: 18px;
-    color: #999;
-    margin-bottom: 10px;
-  }
-  
-  .banner {
-    height: 50px;
-    line-height: 50px;    
-    background: #b82a2f;
-    color: white;  
-    
-    h1 {
-      font-family: $title-font;
-      font-size: 28px;
-      padding-left: 40px;
-      font-weight: 300;
-    }
-  }
-    
-}
-
-

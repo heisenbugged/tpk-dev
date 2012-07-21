@@ -1,0 +1,4 @@
+.form-submits
+  - next_label = "Next" if next_label.nil?
+  = f.submit "Back", :name => "back_button", :class => "grey-action" unless @problem_request.first_step?
+  = f.submit next_label, :class => "red-action"
