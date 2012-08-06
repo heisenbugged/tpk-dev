@@ -4,6 +4,8 @@ TpkDev::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   root :to => "problem_requests#new"
   resources :problem_requests
+  resources :affiliates
+  match "/mission_statement" => "home#mission_statement"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

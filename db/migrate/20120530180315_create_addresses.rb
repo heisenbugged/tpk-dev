@@ -6,6 +6,10 @@ class CreateAddresses < ActiveRecord::Migration
       t.string :city
       t.string :state
       t.integer :zip
+      
+      # geocoding
+      t.float :latitude
+      t.float :longitude
 
       t.references :addressable, :polymorphic => true
 

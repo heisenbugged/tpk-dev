@@ -1,0 +1,50 @@
+#affiliates.whitebox
+  = simple_form_for @affiliate do |f|
+    - if @affiliate.errors.any?
+      .error
+        %ul
+          - @affiliate.errors.full_messages.each do |msg|            
+            %li= msg
+    
+    = f.input :company_name, :wrapper_class => "company-name" #:html => { :class => "company-name" }
+    .clearfix
+      .col1
+        %h3 How do we reach you?        
+        = f.simple_fields_for :addresses do |address|
+          = address.input :street_line_1
+          = address.input :street_line_2
+          = address.input :city, :wrapper => false, :input_html => { :class => "city" }
+          = address.input :state, :wrapper => false, :input_html => { :class => "state" }
+          = address.input :zip, :wrapper => false, :as => :string, :input_html => { :class => "zip" }
+      .col2
+        %h3 Primary Contact
+        = f.input :first_name
+        = f.input :last_name
+        
+        = f.simple_fields_for :phones do |phone|
+          = phone.input :number, :label => phone.object.ph_type
+          = phone.input :ph_type, :as => :hidden
+      
+    .associations.clearfix            
+      #certifications
+        %h3 Certifications
+        = f.simple_fields_for :certifications do |cert|    
+          = render 'certification_fields', :f => cert
+        .link
+          = link_to_add_association 'add certification', f, :certifications, :class => "grey-action small"
+      
+      #services
+        %h3 Services
+        = f.simple_fields_for :it_services do |services|
+          = render 'it_service_fields', :f => services
+        .link
+          = link_to_add_association 'add service', f, :it_services, :class => "grey-action small"
+            
+      #skills
+        %h3 Skills
+        = f.simple_fields_for :skills do |skills|
+          = render 'skill_fields', :f => skills
+        .link
+          = link_to_add_association 'add skill', f, :skills, :class => "grey-action small"
+    
+    = f.submit "Sign Up", :class => "red-action submit"

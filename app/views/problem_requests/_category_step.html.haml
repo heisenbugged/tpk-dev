@@ -1,11 +1,12 @@
-#hurting.whitebox
-  %h2 Where are you <span class="red">hurting?</span>
+= simple_form_for @problem_request, :remote => true do |f|
+  #hurting.whitebox
+    %h2 Where are you <span class="red">hurting?</span>
 
-  #hurting-list.clearfix
-    - @categories.each do |category|
-      .item{:'data-id' => category.id}
-        %span{class: category.css_class}
-        %p= category.name                        
-        = check_box_tag "problem_request[category_ids][]", category.id, false, :id => "category_check_#{category.id}"
+    #hurting-list.clearfix
+      - @categories.each do |category|
+        .item{:'data-id' => category.id}
+          %span{class: category.css_class}
+          %p= category.name                        
+          = check_box_tag "problem_request[category_ids][]", category.id, false, :id => "category_check_#{category.id}"
 
-  = render 'submits', :f => f, :next_label => "Get Help"
+    = render 'submits', :f => f, :next_label => "Get Help"

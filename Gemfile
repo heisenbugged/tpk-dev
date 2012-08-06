@@ -10,17 +10,22 @@ gem 'mysql2'
 gem "simple_form"
 gem "inherited_resources"
 gem "devise"
+gem "activeadmin"
+
+# Design gems.
+gem 'flutie'
 gem 'bourbon'
 gem "haml"
-gem "activeadmin"
 
 gem "fabrication"
 gem "rspec-rails", :group => [:test, :development]
 
 gem "guard"
 gem "guard-spork"
-
 gem "pry", :group => :development
+gem "carrierwave"
+gem "cocoon"
+gem "geocoder"
 
 group :test do  
   gem "capybara"

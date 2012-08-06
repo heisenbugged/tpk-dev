@@ -7,6 +7,10 @@ class ProblemRequest < ActiveRecord::Base
   has_and_belongs_to_many :categories, :class_name => "ProblemCategory"
   has_and_belongs_to_many :details, :class_name => "ProblemDetail"
   
+  with_options :if => lambda { |o| o.current_step == "category" } do |o|
+    o.validates_presence_of :category_ids
+  end
+  
   with_options :if => lambda { |o| o.current_step == "info" } do |o|
     o.validates_presence_of :full_name, :zip
     o.validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i

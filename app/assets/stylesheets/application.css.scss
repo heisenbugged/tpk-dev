@@ -11,8 +11,27 @@
  *= require_self
 */
 
-@import "bourbon";
 @import "reset";
+@import "bourbon";
 @import "main";
-@import "home";
-@import "problem_requests"
+@import "problem_requests";
+@import "affiliates";
+
+
+.alert, .error {
+  color: #B94A48;
+  background-color: #F2DEDE;
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 18px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  border: 1px solid #EED3D7;
+  @include border-radius(4px);
+  
+  li {
+    font-family: $title-font;
+    font-weight: 600;
+    text-align: center;
+    line-height: 25px;
+  }
+  
+}

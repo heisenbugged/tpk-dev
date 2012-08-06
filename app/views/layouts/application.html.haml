@@ -11,28 +11,23 @@
   %body{:'data-controller' => controller_name, :'data-action' => action_name}
     #header
       #logo
-        = image_tag 'logo.png'
+        = link_to root_url do
+          = image_tag 'logo.png'
       #menu
         %ul
           %li HOME
           %li MENU ITEM
           %li LOGIN
-          
-    
-    #banner
-      .content
-        %h1
-          We're an alliance of <span class="yellow">service providers</span>
-          and <span class="red">developers</span> who try to take the pain 
-          out of technology.
-          
-        #founder-image
-          = image_tag 'mikeplaceholder.png'
+              
+    = render 'shared/banner'
           
     #body
-      #main-content      
-        %p.notice= notice
-        %p.alert= alert
+      #main-content{:class => (request.url == root_url) ? 'home-padding' : ''}
+        - if flash[:notice]
+          %p.notice= notice
+          
+        - if flash[:alert]
+          %p.alert= alert
 
         = yield
         

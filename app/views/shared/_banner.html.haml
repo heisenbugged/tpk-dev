@@ -1,0 +1,13 @@
+- if request.url == root_url
+  #banner
+    .content
+      %h1
+        We're an alliance of <span class="yellow">service providers</span>
+        and <span class="red">developers</span> who try to take the pain 
+        out of technology.
+      
+      #founder-image
+        = image_tag 'mikeplaceholder.png'
+- else
+  #banner.slim
+    %h1= @page_title

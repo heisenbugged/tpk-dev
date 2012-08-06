@@ -1,15 +1,16 @@
-#identify-problems.whitebox
-  %h2 
-    Identify the <span class="orange">Problems</span>
+= simple_form_for @problem_request, :remote => true do |f|
+  #identify-problems.whitebox
+    %h2 
+      Identify the <span class="orange">Problems</span>
 
-  - @categories.each_with_index do |category, i|
-    .category-form
-      .banner
-        %h1= category.name
+    - @categories.each_with_index do |category, i|
+      .category-form
+        .banner
+          %h1= category.name
       
-      .problem-detail-list.clearfix
-        = f.association :details, :collection  => category.problem_details, :label => false, :as => :check_boxes
+        .problem-detail-list.clearfix
+          = f.association :details, :collection  => category.problem_details, :label => false, :as => :check_boxes
   
-  = f.input :description, :label => "Please Enter a Quick Description of your problem(s)."
+    = f.input :description, :label => "Please Enter a Quick Description of your problem(s)."
     
-  = render 'submits', :f => f
+    = render 'submits', :f => f

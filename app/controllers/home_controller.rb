@@ -3,6 +3,7 @@ class HomeController < ApplicationController
     @categories = ProblemCategory.all
   end
   
-  def second
-  end
+  def mission_statement
+    @page_title = "Mission Statement"
+  end  
 end

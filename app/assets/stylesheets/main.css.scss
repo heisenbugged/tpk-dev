@@ -68,6 +68,16 @@ span.red {
   border-radius: 10px;
 }
 
+fieldset {
+  border: 1px solid #ccc;
+  padding: 10px;
+  
+  legend {
+    font-weight: bold;
+    padding: 0px 5px;
+  }
+}
+
 #header {
   background: url('/assets/header_bg.png');
   height: 140px;
@@ -118,6 +128,12 @@ span.red {
   height: 330px;  
   @include linear-gradient(rgb(46,46,46), rgb(31,31,31));
   
+  &.slim {
+    @include box-shadow(inset 0 0 7px rgba(0,0,0,.2));
+    background: #454545;
+    height: 65px;    
+  }
+  
   h1 {
     position: absolute;
     width: 425px;
@@ -136,6 +152,16 @@ span.red {
   }
 }
 
+#banner.slim h1 {
+  position: static;
+  width: auto;
+  font-family: $title-font;
+  font-weight: 800;
+  font-size: 35px;
+  line-height: 65px;
+  letter-spacing: 0;
+  text-align: center;
+}
 
 #founder-image {
   position: absolute;
@@ -153,11 +179,12 @@ span.red {
 #main-content {
   margin: auto;
   width: 920px;
-  /* 
-     60px of this padding is to compensate for top image overflowing past black header area.
-  */
-  padding-top: 85px;
-  padding-bottom: 40px;
+  padding: 40px 0;
+  
+  /*  60px of this padding is to compensate for top image overflowing past black header area. */  
+  &.home-padding {
+    padding-top: 85px;    
+  }  
 }
 
 #footer {
@@ -177,6 +204,12 @@ span.red {
   font-family: $title-font;
   font-size: 20px;
   font-weight: 400;
+  
+  &.small {
+    font-weight: 600;
+    font-size: 14px;
+    padding: 6px;
+  }
 }
 
 .grey-action {
@@ -185,5 +218,11 @@ span.red {
   font-family: $title-font;
   font-size: 20px;
   font-weight: 400;
+  
+  &.small {
+    font-weight: 600;
+    font-size: 14px;
+    padding: 6px;
+  }
 }
 

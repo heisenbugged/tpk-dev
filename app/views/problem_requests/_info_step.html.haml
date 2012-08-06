@@ -1,10 +1,11 @@
-#identify-problems.whitebox
-  %h2 How do we contact you?
+= simple_form_for @problem_request, :remote => true do |f|
+  #identify-problems.whitebox
+    %h2 How do we contact you?
   
-  .contact-info
-    = f.input :full_name
-    = f.input :email
-    = f.input :phone
-    = f.input :zip, :as => :string
+    .contact-info
+      = f.input :full_name
+      = f.input :email
+      = f.input :phone
+      = f.input :zip, :as => :string
     
-  = render 'submits', :f => f, :next_label => "Done"
+    = render 'submits', :f => f, :next_label => "Done"
