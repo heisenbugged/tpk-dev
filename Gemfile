@@ -26,6 +26,9 @@ gem "pry", :group => :development
 gem "carrierwave"
 gem "cocoon"
 gem "geocoder"
+gem "faker"
+# Mute rails pipeline asset log
+gem 'quiet_assets', :group => :development
 
 group :test do  
   gem "capybara"

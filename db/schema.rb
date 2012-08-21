@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120801224738) do
+ActiveRecord::Schema.define(:version => 20120806224029) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -69,25 +69,20 @@ ActiveRecord::Schema.define(:version => 20120801224738) do
     t.datetime "updated_at",   :null => false
   end
 
-  create_table "affiliates_certifications", :id => false, :force => true do |t|
-    t.integer "affiliate_id"
-    t.integer "certification_id"
-  end
-
   create_table "affiliates_it_services", :id => false, :force => true do |t|
     t.integer "affiliate_id"
     t.integer "it_service_id"
   end
 
-  create_table "affiliates_skills", :id => false, :force => true do |t|
-    t.integer "affiliate_id"
-    t.integer "skill_id"
+  create_table "certificates", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "certifications", :force => true do |t|
-    t.string   "cert_name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer "affiliate_id"
+    t.integer "certificate_id"
   end
 
   create_table "customers", :force => true do |t|
@@ -147,6 +142,8 @@ ActiveRecord::Schema.define(:version => 20120801224738) do
     t.string   "phone"
     t.integer  "zip"
     t.text     "description"
+    t.float    "latitude"
+    t.float    "longitude"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -173,6 +170,11 @@ ActiveRecord::Schema.define(:version => 20120801224738) do
     t.string   "comments"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "skill_sets", :force => true do |t|
+    t.integer "affiliate_id"
+    t.integer "skill_id"
   end
 
   create_table "skills", :force => true do |t|

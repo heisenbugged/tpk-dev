@@ -1,8 +1,8 @@
 class CreateCertifications < ActiveRecord::Migration
   def change
     create_table :certifications do |t|
-      t.string :cert_name
-      t.timestamps
+      t.integer :affiliate_id
+      t.integer :certificate_id
     end
   end
 end

@@ -15,6 +15,9 @@ class ProblemRequest < ActiveRecord::Base
     o.validates_presence_of :full_name, :zip
     o.validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
   end
+  
+  geocoded_by :zip
+  after_validation :geocode, :if => :zip_changed?
     
   # == functions for multi-step form support.
   #    state machine would be a decent alternative.

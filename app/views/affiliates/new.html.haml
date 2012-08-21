@@ -42,9 +42,11 @@
             
       #skills
         %h3 Skills
-        = f.simple_fields_for :skills do |skills|
-          = render 'skill_fields', :f => skills
+        = f.simple_fields_for :skill_sets do |s|
+          = render 'skill_set_fields', :f => s
+          
         .link
-          = link_to_add_association 'add skill', f, :skills, :class => "grey-action small"
+          = link_to_add_association 'add skill', f, :skill_sets, :class => "grey-action small"
+        
     
     = f.submit "Sign Up", :class => "red-action submit"
