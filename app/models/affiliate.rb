@@ -9,12 +9,10 @@ class Affiliate < ActiveRecord::Base
   has_many :skills, :through => :skill_sets
   
   has_and_belongs_to_many :it_services
-  #has_and_belongs_to_many :skills
   
-  accepts_nested_attributes_for :certifications#, :reject_if => lambda { |c| c[:cert_name].blank? }
+  accepts_nested_attributes_for :certifications
   accepts_nested_attributes_for :it_services,    :reject_if => lambda { |a| a[:service_name].blank? }
   accepts_nested_attributes_for :skill_sets
-  #accepts_nested_attributes_for :skills,         :reject_if => lambda { |a| a[:name].blank? }  
   accepts_nested_attributes_for :phones,         :reject_if => lambda { |p| p[:number].blank? or p[:ph_type].blank? }
   accepts_nested_attributes_for :addresses
   

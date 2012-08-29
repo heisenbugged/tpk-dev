@@ -16,7 +16,7 @@ class Certification < ActiveRecord::Base
     if cert
       self.certificate = cert
     else
-      @certificate = Certficiate.new(:name => name)
+      @certificate = Certificate.new(:name => name)
       self.certificate = @certificate
     end
     @cert_name = name

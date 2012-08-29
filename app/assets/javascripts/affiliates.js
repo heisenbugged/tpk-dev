@@ -7,6 +7,8 @@ JSRouter['affiliates'] = {
   }
 };
 
+JSRouter['affiliates']['create'] = JSRouter['affiliates']['new'];
+
 function refreshSkillAutoCompletes() {
   $("#skills input").unbind("autocomplete").autocomplete({
     source: $("#skills input").data("autocomplete-source")

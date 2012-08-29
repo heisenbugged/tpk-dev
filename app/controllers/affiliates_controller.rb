@@ -8,7 +8,7 @@ class AffiliatesController < ApplicationController
     @affiliate = Affiliate.new(params[:affiliate])
     
     if @affiliate.save
-      redirect_to affiliates_url, :notice => "You have successfully signed up."
+      redirect_to root_url, :notice => "You have successfully signed up."
     else
       build_nested_attributes @affiliate
       render 'new'

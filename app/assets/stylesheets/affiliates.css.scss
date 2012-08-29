@@ -111,3 +111,24 @@
     width: 450px;
   }
 }
+
+ul.ui-autocomplete {  
+  position: absolute;
+  @include border-radius(5px);  
+  border: solid 1px #eee;
+  cursor: default;
+  
+  li {
+    background-color: white;
+
+    a {
+      color: black;
+      display: block;
+      padding: 8px 5px;
+    }
+    a.ui-state-hover, a.ui-state-active {
+      background: #4183C4;
+      color: white;
+    }
+  }
+}
