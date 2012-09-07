@@ -1,6 +1,6 @@
 require "bundler/capistrano"
 
-server "", :web, :app, :db, primary: true
+server "198.58.96.229", :web, :app, :db, primary: true
 
 set :application, "tpk-dev"
 set :user, "deployer"
