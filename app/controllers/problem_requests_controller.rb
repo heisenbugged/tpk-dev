@@ -7,6 +7,14 @@ class ProblemRequestsController < ApplicationController
     @categories = load_categories @problem_request
   end
   
+  def show
+    @page_title = "Find Affiliates"
+    @problem_request = ProblemRequest.find(params[:id])
+    @addresses = Address.near(@problem_request.coordinates, 30).of_affiliates.sort_by { 
+                                                                                        |a| a.addressable.score(@problem_request)
+                                                                                      }.reverse
+  end
+  
   def create
     # Merge in filled out form values into parameters and instantiate problem request object based on that merge.
     session[:problem_request_params].deep_merge!(params[:problem_request]) if params[:problem_request]
@@ -50,5 +58,6 @@ private
     else
       problem_request.categories
     end
-  end  
+  end
+
 end

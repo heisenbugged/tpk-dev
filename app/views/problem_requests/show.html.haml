@@ -1,2 +1,21 @@
-.whitebox 
-  %h1 problem request created!
+.whitebox
+  %h2.center We've found <span class="bold dark-red">#{@addresses.count} service providers</span> for you!
+  
+  .service-providers
+    - @addresses.each do |address|
+      - affiliate = address.addressable
+      .service-provider
+        = image_tag "unknown.png"
+          
+        .col2
+          %h3= affiliate.company_name
+          %p= address.full_address
+          - affiliate.phones.each do |phone|
+            %p <b>#{phone.ph_type}:</b> #{phone.number}            
+          %p <span class="bold dark-red">#{round_to address.distance_to(@problem_request.coordinates), 2} miles away</span> from your location.
+          
+          .skills
+            %p Skills you might be interested in:
+            - affiliate.skills_for_problem(@problem_request).each do |skill|
+              = skill.name
+    

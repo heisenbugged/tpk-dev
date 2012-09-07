@@ -7,6 +7,7 @@ TpkDev::Application.routes.draw do
   resources :affiliates
   resources :certificates
   resources :skills
+  resources :it_services
   match "/mission_statement" => "home#mission_statement"
   
   # The priority is based upon order of creation:

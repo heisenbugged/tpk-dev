@@ -19,7 +19,7 @@ private
   def build_nested_attributes affiliate
     affiliate.addresses.build if affiliate.addresses.blank?
     affiliate.certifications.build if affiliate.certifications.blank?    
-    affiliate.it_services.build if affiliate.it_services.blank?
+    affiliate.service_sets.build if affiliate.service_sets.blank?
     affiliate.skill_sets.build if affiliate.skill_sets.blank?
     
     phones = []

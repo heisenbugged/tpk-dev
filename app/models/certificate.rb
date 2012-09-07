@@ -3,5 +3,5 @@ class Certificate < ActiveRecord::Base
    
   has_many :certifications
   has_many :affiliates, :through => :certifications
-  has_many :skills
+  has_and_belongs_to_many :skills
 end

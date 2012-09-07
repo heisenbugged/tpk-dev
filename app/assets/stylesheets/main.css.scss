@@ -18,6 +18,8 @@ body {
   color: #333;
 }
 
+b { font-weight: bold; }
+
 p {
   line-height: 19px;
 }
@@ -46,12 +48,24 @@ h2.bold {
   color: #565656; 
 }
 
-span.yellow {
+.center {
+  text-align: center;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.yellow {
   color: #f5c106;
 }
 
-span.red {
+.red {
   color: #ff6a6f;
+}
+
+.dark-red {
+  color: #B62227;
 }
 
 .orange {

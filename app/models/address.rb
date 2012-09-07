@@ -1,4 +1,6 @@
 class Address < ActiveRecord::Base
+  scope :of_affiliates, where(:addressable_type => "Affiliate").includes(:addressable)
+  
   attr_accessible :city, :state, :street_line_1, :street_line_2, :zip
   belongs_to :addressable, :polymorphic => true  
   validates_presence_of :street_line_1, :city, :state, :zip

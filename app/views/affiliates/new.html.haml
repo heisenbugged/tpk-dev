@@ -1,11 +1,6 @@
 #affiliates.whitebox
   = simple_form_for @affiliate do |f|
-    - if @affiliate.errors.any?
-      .error
-        %ul
-          - @affiliate.errors.full_messages.each do |msg|            
-            %li= msg
-    
+    = render 'shared/form_errors', :object => @affiliate    
     = f.input :company_name, :wrapper_class => "company-name" #:html => { :class => "company-name" }
     .clearfix
       .col1
@@ -35,10 +30,10 @@
       
       #services
         %h3 Services
-        = f.simple_fields_for :it_services do |services|
-          = render 'it_service_fields', :f => services
+        = f.simple_fields_for :service_sets do |services|
+          = render 'service_set_fields', :f => services
         .link
-          = link_to_add_association 'add service', f, :it_services, :class => "grey-action small"
+          = link_to_add_association 'add service', f, :service_sets, :class => "grey-action small"
             
       #skills
         %h3 Skills

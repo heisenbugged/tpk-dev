@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120806224029) do
+ActiveRecord::Schema.define(:version => 20120831004104) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -69,15 +69,15 @@ ActiveRecord::Schema.define(:version => 20120806224029) do
     t.datetime "updated_at",   :null => false
   end
 
-  create_table "affiliates_it_services", :id => false, :force => true do |t|
-    t.integer "affiliate_id"
-    t.integer "it_service_id"
-  end
-
   create_table "certificates", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "certificates_skills", :id => false, :force => true do |t|
+    t.integer "certificate_id"
+    t.integer "skill_id"
   end
 
   create_table "certifications", :force => true do |t|
@@ -93,9 +93,14 @@ ActiveRecord::Schema.define(:version => 20120806224029) do
   end
 
   create_table "it_services", :force => true do |t|
-    t.string   "service_name"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "it_services_skills", :id => false, :force => true do |t|
+    t.integer "it_service_id"
+    t.integer "skill_id"
   end
 
   create_table "phones", :force => true do |t|
@@ -170,6 +175,11 @@ ActiveRecord::Schema.define(:version => 20120806224029) do
     t.string   "comments"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "service_sets", :force => true do |t|
+    t.integer "affiliate_id"
+    t.integer "it_service_id"
   end
 
   create_table "skill_sets", :force => true do |t|

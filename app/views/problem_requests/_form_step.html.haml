@@ -1,5 +1,6 @@
 = simple_form_for @problem_request, :remote => true do |f|
   #identify-problems.whitebox
+    = render 'shared/form_errors', :object => @problem_request
     %h2 
       Identify the <span class="orange">Problems</span>
 
