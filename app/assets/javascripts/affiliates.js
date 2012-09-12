@@ -1,30 +1,35 @@
 JSRouter['affiliates'] = {
   new: function() {
-    refreshServiceAutoCompletes();
-    refreshCertAutoCompletes();
-    refreshSkillAutoCompletes();
-    $("#certifications").bind('insertion-callback', refreshCertAutoCompletes);    
-    $("#skills").bind('insertion-callback', refreshSkillAutoCompletes);
-    $("#services").bind('insertion-callback', refreshServiceAutoCompletes);
+    refreshAllAutoCompletes();
+    $("#certifications").bind('insertion-callback', function() { refreshAutoComplete("#certifications")});    
+    $("#services").bind('insertion-callback', function() { refreshAutoComplete("#services")});
+    $("#skills").bind('insertion-callback', function() { refreshAutoComplete("#skills")});    
   }
 };
 
 JSRouter['affiliates']['create'] = JSRouter['affiliates']['new'];
 
-function refreshServiceAutoCompletes() {
-  $("#services input").unbind("autocomplete").autocomplete({
-    source: $("#services input").data("autocomplete-source")
-  });
+
+function refreshAllAutoCompletes() {
+  refreshAutoComplete("#certifications");
+  refreshAutoComplete("#skills");
+  refreshAutoComplete("#services");
 }
 
-function refreshSkillAutoCompletes() {
-  $("#skills input").unbind("autocomplete").autocomplete({
-    source: $("#skills input").data("autocomplete-source")
+function refreshAutoComplete(criteria) {
+  inputCriteria = criteria + " input";
+  $(inputCriteria).unbind("autocomplete").autocomplete({
+    source: $(inputCriteria).data("autocomplete-source")
   });
-}
-
-function refreshCertAutoCompletes() {
-  $('#certifications input').unbind('autocomplete').autocomplete({
-    source:  $('#certifications input').data('autocomplete-source')
+  
+  // if one of the textfields for certs, services, or skills are selected
+  // prevent form from submitting and instead add a new row when enter is pressed.
+  $(inputCriteria).unbind("keypress").keypress(function (e) {
+    if(e.which == 13) {
+      $(criteria + " .link a").click();
+      // put focus on new input created
+      $(inputCriteria).last().focus();
+      e.preventDefault();
+    }
   });
 }
