@@ -5,7 +5,10 @@
     - @addresses.each do |address|
       - affiliate = address.addressable
       .service-provider
-        = image_tag "unknown.png"
+        - if affiliate.logo_url
+          = image_tag affiliate.logo_url(:thumb)
+        - else
+          = image_tag "unknown.png"
           
         .col2
           %h3= affiliate.company_name

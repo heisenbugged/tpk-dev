@@ -1,9 +1,18 @@
 class AffiliatesController < ApplicationController
+  load_and_authorize_resource
+  
   def new
     @page_title = "Affiliate Sign Up"
     @affiliate = Affiliate.new
     build_nested_attributes @affiliate
   end
+  
+  def edit
+    @affiliate = Affiliate.find params["id"]    
+    @page_title = "Editing Affiliate " + @affiliate.company_name
+    build_nested_attributes @affiliate
+  end
+  
   def create
     @affiliate = Affiliate.new(params[:affiliate])
     

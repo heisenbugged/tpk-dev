@@ -1,11 +1,23 @@
 ActiveAdmin::Dashboards.build do
 
+  section "Latest 10 Affiliates" do
+    table_for Affiliate.limit(10) do
+      column :company_name
+      column :first_name
+      column :last_name
+      column :website_url
+      column :actions do |affiliate|
+        link_to "Edit", edit_affiliate_path(affiliate)
+      end
+    end
+  end    
+  
   section "Problem Categories" do
     table_for ProblemCategory.all do
       column :category_name
       column :created_at
       column :updated_at
-    end
+    end    
   end
   
   # Define your dashboard sections here. Each block will be

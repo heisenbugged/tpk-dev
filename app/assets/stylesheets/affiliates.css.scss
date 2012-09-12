@@ -18,7 +18,7 @@
     margin-top: 25px;
   }
   
-  input[type='text'] {
+  input[type='text'], input[type='url'] {
     padding: 5px;
     @include border-radius(5px);
     border: 1px solid #d9d9d9;
@@ -37,6 +37,14 @@
     text-align: center;
     font-weight: 400;
     color: #454545;
+  }
+  
+  .logo-preview {
+    display: inline-block;
+    padding: 10px;
+    background: #fefefe;
+    border: 1px solid #d9d9d9;
+    @include border-radius(5px);
   }
 }
 
@@ -95,12 +103,14 @@
   }
 }
 
-#affiliates .company-name {
+#affiliates .company-name, #affiliates .website-name {
   text-align: center;
   margin-bottom: 25px;
   
   abbr { display: none; }
   label {
+    width: 180px;
+    display: inline-block;
     font-size: 24px;
     font-weight: 300;
   }
@@ -111,6 +121,34 @@
     width: 450px;
   }
 }
+
+
+#affiliates .bonded {
+  display: inline-block;
+  input {
+    margin-left: 25px;
+    margin-right: 10px;
+  }
+}
+
+#affiliates .logo-upload {
+  display: inline-block;
+  text-align: center;
+  margin-left: 120px;
+  
+  label {
+    font-weight: 300;
+    font-size: 24px;
+    font-family: $title-font;      
+  }
+  
+  input {
+    margin-left: 10px;
+    width: 185px;
+  }
+  
+}
+
 
 ul.ui-autocomplete {  
   position: absolute;

@@ -1,5 +1,6 @@
 class ProblemRequestsController < ApplicationController
   respond_to :html, :js
+  load_and_authorize_resource
   
   def new       
     reset_session

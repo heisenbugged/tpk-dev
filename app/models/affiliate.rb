@@ -18,12 +18,15 @@ class Affiliate < ActiveRecord::Base
   accepts_nested_attributes_for :phones, :reject_if => lambda { |p| !Phone.new(p).valid? }
   accepts_nested_attributes_for :addresses, :reject_if => lambda { |a| !Address.new(a).valid? }
   
-  attr_accessible :company_name, :first_name, :last_name, :bonded, :certifications, :service_sets, :skill_sets
+  attr_accessible :company_name, :first_name, :last_name, :bonded, :certifications, :service_sets, :skill_sets,
+                  :website_url, :bonded, :logo, :logo_cache
   
   attr_accessible :certifications_attributes, :service_sets_attributes, :skill_sets_attributes, 
                   :addresses_attributes, :phones_attributes
+                  
+  mount_uploader :logo, LogoUploader
                                     
-  validates_presence_of :company_name, :phones
+  validates_presence_of :company_name, :phones, :website_url
   validate :has_skill?, :on => :create
   validate :has_address?, :on => :create
   

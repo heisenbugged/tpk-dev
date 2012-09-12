@@ -123,6 +123,11 @@ fieldset {
   box-shadow: 3px 3px 7px #c1c1c1;
   
   ul {
+    a, a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+
     font-family: $header-font;
     color: white;
     font-size: 22px;

@@ -7,26 +7,33 @@ gem 'rails', '3.2.3'
 
 gem 'mysql2'
 
+# Form gems.
 gem "simple_form"
-gem "inherited_resources"
-gem "devise"
-gem "activeadmin"
+gem "cocoon"
 
 # Design gems.
 gem 'flutie'
 gem 'bourbon'
 gem "haml"
 
+# Test gems.
 gem "fabrication"
 gem "rspec-rails", :group => [:test, :development]
-
 gem "guard"
 gem "guard-spork"
-gem "pry", :group => :development
-gem "carrierwave"
-gem "cocoon"
-gem "geocoder"
 gem "faker"
+
+gem "pry", :group => :development
+
+gem "carrierwave"
+gem "mini_magick"
+
+gem "geocoder"
+gem "inherited_resources"
+gem "devise"
+gem "cancan"
+gem "activeadmin"
+
 # Mute rails pipeline asset log
 gem 'quiet_assets', :group => :development
 

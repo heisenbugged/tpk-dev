@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120831004104) do
+ActiveRecord::Schema.define(:version => 20120911223230) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -67,6 +67,8 @@ ActiveRecord::Schema.define(:version => 20120831004104) do
     t.boolean  "bonded"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "website_url"
+    t.string   "logo"
   end
 
   create_table "certificates", :force => true do |t|

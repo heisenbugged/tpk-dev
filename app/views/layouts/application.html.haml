@@ -15,9 +15,9 @@
           = image_tag 'logo.png'
       #menu
         %ul
-          %li HOME
-          %li MENU ITEM
-          %li LOGIN
+          %li= link_to "Home", root_url
+          %li= link_to "Become an Affiliate", new_affiliate_path
+          %li About Us
               
     = render 'shared/banner'
           
