@@ -39,6 +39,7 @@ ActiveAdmin.register Affiliate do
       f.input :company_name
       f.input :website_url
       f.input :bonded
+      f.input :state, :collection => Affiliate::STATES
     end
     
     f.inputs "Address", :for => [:addresses] do |fm|

@@ -1,0 +1,61 @@
+<div style="width: 750px; font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 26px; padding: 10px; color: #333; font-size: 14px;">
+  <div style="margin-bottom: 25px;background: #333;border-radius:  15px;">
+      <div style="padding: 10px; border: 1px solid #ccc; display: inline-block;background:  white;vertical-align:  middle;">
+        <%= image_tag "http://198.58.96.229/assets/logo.png", :alt => "Technology Painkillers" %>
+      </div>
+      <p style="display: inline-block; color: white; vertical-align: middle; text-align:  center; width: 530px; font-size: 28px;">
+        Service Provider Search
+      </p>
+    </div>
+  
+  <h1 style="font-size: 26px; font-weight: 300; text-align: center; margin-bottom: 25px;">
+    We've found <span style="font-weight: bold; color: #B62227;"><%= @addresses.count %> service providers</span> for you!
+  </h1>
+  
+  
+  <div style='border-top: 1px solid #ccc; padding: 20px;'>
+    <% @addresses.each do |address| %>
+      <% affiliate = address.addressable %>
+      <% next if affiliate.status != :active %>
+      <div style="padding: 20px;">
+        <% if affiliate.logo_url %>
+          <%= image_tag affiliate.logo_url(:thumb) %>
+        <% else %>
+          <%= image_tag "unknown.png", :style => "float: left;" %>
+        <% end %>
+        <div style="float: left; margin-left: 20px; width: 575px;">
+          <h3 style="font-weight: 600; font-size: 21px; margin: 0; padding-bottom: 10px;">
+            <%= affiliate.company_name%>
+          </h3>
+          <p style="line-height: 19px; margin: 0;"><Running Brush Ln, Austin, Texas, 78717><%= address.full_address %></p>
+          <% affiliate.phones.each do |phone| %>
+            <p style="line-height: 19px; margin: 0;"><b><%= phone.ph_type %>:</b> <%= phone.number %></p>
+          <% end %>
+          <p style="line-height: 19px; margin: 0;">
+            <span style="font-weight: bold; color: #B62227;">
+              <%= round_to address.distance_to(@problem_request.coordinates), 2 %>
+            </span> 
+            away from your location
+          </p>
+          <div style="padding: 10px 0px;">
+            <p style="margin: 0; line-height: 19px; margin-bottom: 5px; padding-bottom: 5px; border-bottom: 1px solid #ececec;">
+              <b>Skills you might be interested in</b>
+              <ul style="list-style-type: square; margin: 0; padding: 0;">
+                <% affiliate.skills_for_problem(@problem_request).each do |skill| %>
+                  <li><%= skill.name %></li>
+                <% end %>
+              </ul>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <br style="clear: both;" />
+    <div style="margin-top: 20px; padding: 20px 0px; background: #B62227; color: white; font-size: 24px; text-align: center; vertical-align: middle;">
+      instructions go here
+    </div>
+    <div style='margin-top: 5px; text-align: center;'>
+      &copy; All Rights Reserved. Technology Painkillers Inc.
+    </div>
+  </div>    
+</div>

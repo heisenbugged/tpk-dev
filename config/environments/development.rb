@@ -14,7 +14,7 @@ TpkDev::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -34,4 +34,17 @@ TpkDev::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  # ActionMailer configuration
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'technologypainkillers.com',
+    :user_name            => 'mike@technologypainkillers.com',
+    :password             => 'tpkHTOC1God',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true 
+  }  
+    
 end

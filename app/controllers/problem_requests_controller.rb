@@ -42,6 +42,10 @@ class ProblemRequestsController < ApplicationController
       # If problem request has been created, clear session variables
       # so next time page is hit a new problem request will be created.
       reset_session
+      
+      # Enqueue worker to send email with service providers.
+      Resque.enqueue(ServiceProviderFinder, @problem_request.id)
+      
       redirect_to @problem_request
     end
   end

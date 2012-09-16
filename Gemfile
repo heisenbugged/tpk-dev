@@ -32,6 +32,7 @@ gem "geocoder"
 gem "inherited_resources"
 gem "devise"
 gem "cancan"
+gem 'resque', :require => "resque/server"
 gem "activeadmin"
 
 # Mute rails pipeline asset log

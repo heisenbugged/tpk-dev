@@ -8,8 +8,8 @@
     = f.file_field :logo
     = f.hidden_field :logo_cache
 
-  .logo-preview
-    - if affiliate.logo_url
+  - if affiliate.logo_url
+    .logo-preview
       = image_tag affiliate.logo_url(:thumb)
           
   = f.input :bonded, :wrapper_class => "bonded"
@@ -30,7 +30,7 @@
       %h3 Primary Contact
       = f.input :first_name
       = f.input :last_name
-      
+      = f.input :email, :as => :string
       = f.simple_fields_for :phones do |phone|
         = phone.input :number, :label => phone.object.ph_type
         = phone.input :ph_type, :as => :hidden

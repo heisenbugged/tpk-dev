@@ -1,8 +1,6 @@
 #affiliates { 
-  abbr {
-    display: none;
-  }
-  
+  abbr { color: red; }      
+      
   input[type='text'] {
     width: 180px;
   }
@@ -30,7 +28,7 @@
   label {
     font-family: $title-font;
     font-size: 18px;
-    padding-right: 10px;
+    padding-right: 14px;
   }  
   
   h3 {
@@ -86,10 +84,12 @@
   float: left;
   width: golden-ratio(810px, -1);
   line-height: 40px;
-  input { width: 375px; }
+  /*label { width: 110px; display: inline-block;}*/
+  input { width: 365px; }
   .state { width: 100px; margin-right: 15px; }
-  .city { width: 140px; margin-right: 15px; }
+  .city { width: 117px; margin-right: 15px; }
   .zip { width: 55px; }
+  label.required { padding-right: 4px; }
 }
   
 #affiliates .col2 {
@@ -107,7 +107,7 @@
   text-align: center;
   margin-bottom: 25px;
   
-  abbr { display: none; }
+  /* abbr { display: none; } */
   label {
     width: 180px;
     display: inline-block;

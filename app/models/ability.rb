@@ -27,6 +27,7 @@ class Ability
     
     can :create, Affiliate
     can :create, ProblemRequest
+    can :read, ProblemRequest
     
     if user
       can :manage, :all
