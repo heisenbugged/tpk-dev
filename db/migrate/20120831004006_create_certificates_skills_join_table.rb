@@ -4,5 +4,7 @@ class CreateCertificatesSkillsJoinTable < ActiveRecord::Migration
       t.integer :certificate_id
       t.integer :skill_id
     end
+    add_index :certificates_skills, :certificate_id
+    add_index :certificates_skills, :skill_id
   end
 end

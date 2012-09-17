@@ -7,6 +7,6 @@ class CreateAffiliates < ActiveRecord::Migration
       t.boolean :bonded
 
       t.timestamps
-    end
+    end    
   end
 end

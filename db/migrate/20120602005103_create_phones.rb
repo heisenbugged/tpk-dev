@@ -7,5 +7,6 @@ class CreatePhones < ActiveRecord::Migration
       t.references :phoneable, :polymorphic => true
       t.timestamps
     end
+    add_index :phones, :phoneable_id
   end
 end

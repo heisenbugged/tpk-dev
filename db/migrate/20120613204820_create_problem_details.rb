@@ -5,5 +5,6 @@ class CreateProblemDetails < ActiveRecord::Migration
       t.references :problem_category      
       t.timestamps
     end
+    add_index :problem_details, :problem_category_id
   end
 end

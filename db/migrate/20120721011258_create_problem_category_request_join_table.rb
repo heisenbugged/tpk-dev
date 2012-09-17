@@ -4,5 +4,7 @@ class CreateProblemCategoryRequestJoinTable < ActiveRecord::Migration
       t.integer :problem_category_id
       t.integer :problem_request_id
     end
+    add_index :problem_categories_problem_requests, :problem_category_id
+    add_index :problem_categories_problem_requests, :problem_request_id
   end
 end

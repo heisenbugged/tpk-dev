@@ -4,5 +4,7 @@ class CreateProblemDetailRequestJoinTable < ActiveRecord::Migration
       t.integer :problem_detail_id
       t.integer :problem_request_id
     end
+    add_index :problem_details_problem_requests, :problem_detail_id
+    add_index :problem_details_problem_requests, :problem_request_id
   end
 end
