@@ -16,7 +16,7 @@
   <div style='border-top: 1px solid #ccc; padding: 20px;'>
     <% @addresses.each do |address| %>
       <% affiliate = address.addressable %>
-      <% next if affiliate.status != :active %>
+      <% next if affiliate.state != :active %>
       <div style="padding: 20px;">
         <% if affiliate.logo_url %>
           <%= image_tag affiliate.logo_url(:thumb) %>
