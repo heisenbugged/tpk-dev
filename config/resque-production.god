@@ -1,7 +1,7 @@
 rails_env   = ENV['RAILS_ENV']  || "production"
 rails_root  = ENV['RAILS_ROOT'] || "/home/deployer/apps/tpk-dev/current"
 # Directory where the ruby executable is stored.
-ruby_bin_dir = /home/deployer/.rbenv/versions/1.9.3-p194/bin
+ruby_bin_dir = "/home/deployer/.rbenv/versions/1.9.3-p194/bin"
 
 num_workers = rails_env == 'production' ? 2 : 1
 

@@ -1,7 +1,7 @@
 Unorganized thoughts on how the server is setup.
 Once I'm done, I'll organize these properly into a readme markdown file.
 
-1. Follow Railscast' Deploying to a VPS exactly as described.
+1. Follow Railscast' Deploying to a VPS exactly as described. Make sure to repeat the steps used for database.yml for the email.yml file.
 2. Install redis based on the linode guide: http://library.linode.com/databases/redis/ubuntu-10.04-lucid
 3. Install God based on guide in this gitfile: https://gist.github.com/1275333.
    Note that god-service init file configuration requires different ruby and god bin paths to work with rbenv.
