@@ -48,6 +48,14 @@ namespace :deploy do
       puts "Run `git push` to sync changes"
       exit
     end
-  end
+  end  
   before "deploy", "deploy:check_revision"
+  
+  desc "Hot-reload God configuration for the Resque worker"
+  task :reload_god_config do
+    sudo "god stop resque"
+    sudo "god load #{File.join(deploy_to, 'current', 'config', 'resque-' + rails_env + '.god')}"
+    sudo "god start resque"
+  end
+  after "deploy:check_revision", "deploy:reload_god_config"
 end
