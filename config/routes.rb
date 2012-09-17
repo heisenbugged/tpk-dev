@@ -10,6 +10,9 @@ TpkDev::Application.routes.draw do
   resources :it_services
   match "/mission_statement" => "home#mission_statement"
   
+  # Mount resque web
+  mount Resque::Server, :at => "/resque"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
