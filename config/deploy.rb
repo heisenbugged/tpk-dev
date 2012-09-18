@@ -52,10 +52,14 @@ namespace :deploy do
   before "deploy", "deploy:check_revision"
   
   desc "Hot-reload God configuration for the Resque worker"
-  task :reload_god_config do    
-    run "rbenv sudo god stop resque"
-    run "rbenv sudo god load #{File.join(deploy_to, 'current', 'config', 'resque-' + rails_env + '.god')}"
-    run "rbenv sudo god start resque"
+  task :reload_god_config do        
+    sudo "/usr/local/bin/god stop resque"
+    sudo "/usr/local/bin/god load #{File.join(deploy_to, 'current', 'config', 'resque-' + rails_env + '.god')}"
+    sudo "/usr/local/bin/god start resque"
+        
+    #run "rbenv sudo god stop resque"
+    #run "rbenv sudo god load #{File.join(deploy_to, 'current', 'config', 'resque-' + rails_env + '.god')}"
+    #run "rbenv sudo god start resque"
   end
 end
 

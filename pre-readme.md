@@ -11,6 +11,9 @@ Once I'm done, I'll organize these properly into a readme markdown file.
    God MUST be installed on the root user for things to work. make sure the god-service init paths are set to the ROOT init paths
 
 
+NOTE:
+as part of setup symlink god bin to /usr/local/bin/
+
 NOTE: If any of the gems are not picking up, try "rbenv rehash" and restarting the unicorn init script by running the STOP and START command. DO NOT user the unicorn init script's RESTART command, as it does not fix the problem.
 
 LOOK INTO POSSIBILITIES OF MOVING REDIS AND GOD SETUP INTO CAPISTRANO DEPLOY FILE!!!!
