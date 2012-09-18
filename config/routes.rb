@@ -1,6 +1,7 @@
 TpkDev::Application.routes.draw do
-  ActiveAdmin.routes(self)
-  devise_for :admin_users, ActiveAdmin::Devise.config
+  devise_for :users
+  
+  ActiveAdmin.routes(self)  
   
   root :to => "problem_requests#new"
   resources :problem_requests
