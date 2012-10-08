@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    %title Technology Painkillers    
+    <link href='http://fonts.googleapis.com/css?family=Quicksand:400,400italic,300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+    = stylesheet_link_tag "login", :media => "all"
+    = csrf_meta_tags
+  
+  %body{:'data-controller' => controller_name, :'data-action' => action_name}    
+    = image_tag "logo-login.png"
+
+    - if flash[:notice]
+      %p.notice.center= notice
+    
+    - if flash[:alert]
+      %p.alert.center= alert
+    
+    = yield

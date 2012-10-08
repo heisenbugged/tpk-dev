@@ -1,0 +1,17 @@
+
+
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :email, :required => true, :autofocus => true , :placeholder => "Email", :label => false %>
+    <%= f.input :password, :required => true, :placeholder => "Password", :label => false %>
+    <%= f.input :password_confirmation, :required => true, :placeholder => "Password Confirmation", :label => false %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit, "Sign up", :class => "red-action" %>
+  </div>
+<% end %>
+
+<%#= render :partial => "devise/shared/links" %>

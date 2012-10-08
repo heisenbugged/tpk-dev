@@ -1,0 +1,76 @@
+/*
+ *= require_self
+*/
+
+@import "reset";
+@import "bourbon";
+@import "main";
+
+body {
+  background: url('/assets/main_bg.png');
+}
+
+.alert, .flash, .notice {
+  margin-top: 25px;
+}
+
+img {
+  width: 203px;
+  height: 129px;
+  margin: auto;
+  margin-top: 50px;
+  display: block;
+}
+
+.input {
+  margin-bottom: 30px;
+  
+  .control-label {
+    width: 287px;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+.inputs {
+  width: 616px;
+  margin: 0 auto;
+  margin-top: 25px;
+  
+  input[type='email'], input[type='password'] {
+    @include box-shadow(0px 8px 20px 0px rgba(0, 0, 0, 0.075));
+    
+    width: 612px;
+    padding: 4px 10px;
+    font-size: 35px;
+    font-family: $title-font;
+    font-weight: 300;    
+    border: solid 1px #dbdbdb;
+    text-align: center;
+    color: #333;
+  }
+  
+  input[type='checkbox'] {
+    margin-top: -2px;
+    margin-right: 10px;
+  }
+  
+  input:-moz-placeholder {
+    color: red;
+  }
+  
+  input::-webkit-input-placeholder {
+    color: #ccc;
+  }
+  
+  label {
+    font-family: $title-font;
+    font-size: 17px;
+    color: #444;
+    font-weight: 300;
+  }
+}
+
+.actions {
+  text-align: center;
+}

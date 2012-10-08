@@ -11,6 +11,34 @@ $body-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   border-radius: 5px;  
 }
 
+
+
+
+.alert, .error, .notice {
+  color: #B94A48;
+  background-color: #F2DEDE;
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 18px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  border: 1px solid #EED3D7;
+  @include border-radius(4px);
+  
+  /*li {*/
+    font-family: $title-font;
+    font-weight: 600;
+    text-align: center;
+    line-height: 25px;
+  /*}*/  
+}
+
+.notice {
+  background: #E6EFC2;
+  border-color: #C6D880;
+  color: #529214;
+  
+}
+
+
 body {
   background: #e4e4e4;
   font-size: 14px;

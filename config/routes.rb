@@ -1,5 +1,12 @@
 TpkDev::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :sessions => "sessions",
+                                       :registrations => "registrations",
+                                       :confirmations => "confirmations"
+                                      } do
+                                             
+     get "/users/confirmation_setup" => "registrations#setup", :as => :user_setup
+     put "/users/confirmation_setup" => "registrations#finish_setup", :as => :user_setup     
+  end  
   
   ActiveAdmin.routes(self)  
   
@@ -10,6 +17,7 @@ TpkDev::Application.routes.draw do
   resources :skills
   resources :it_services
   match "/mission_statement" => "home#mission_statement"
+
   
   # Mount resque web
   mount Resque::Server, :at => "/resque"

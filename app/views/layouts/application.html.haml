@@ -17,6 +17,10 @@
         %ul
           %li= link_to "Home", root_url
           %li= link_to "Become an Affiliate", new_affiliate_path
+          - if current_user.nil?
+            %li= link_to "Sign In", new_user_session_path
+          - else
+            %li= link_to "Sign Out", destroy_user_session_path, :method => :delete
           %li About Us
               
     = render 'shared/banner'
