@@ -1,5 +1,6 @@
 class Certification < ActiveRecord::Base
-  attr_accessible :affiliate_id, :certificate_id, :cert_name
+  attr_accessible :affiliate_id, :certificate_id, :cert_name, :_destroy
+  attr_accessor :_destroy
   
   belongs_to :affiliate
   belongs_to :certificate

@@ -97,6 +97,7 @@
   float: left;
   width: 810px - golden-ratio(810px, -1);
   label {
+    abbr { margin-left: -15px; }
     display: inline-block;
     width: 90px;
     text-align: right;
@@ -106,14 +107,13 @@
 #affiliates .company-name, #affiliates .website-name {
   text-align: center;
   margin-bottom: 25px;
-  
-  /* abbr { display: none; } */
   label {
-    width: 180px;
+    width: 190px;
     display: inline-block;
     font-size: 24px;
     font-weight: 300;
   }
+  
   input {
     font-size: 20px;
     font-weight: bold;
@@ -169,4 +169,17 @@ ul.ui-autocomplete {
       color: white;
     }
   }
+}
+
+.remove {
+  position: relative;
+  right: -235px;
+  margin-bottom: -20px;
+  display: block;
+  bottom: 29px;
+  color: #999;
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+  &:hover { color: #333; }
 }

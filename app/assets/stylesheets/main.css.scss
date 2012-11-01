@@ -11,8 +11,10 @@ $body-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   border-radius: 5px;  
 }
 
-
-
+span.error {
+  @include error;
+  font-size: 13px;
+}
 
 .alert, .error, .notice {
   color: #B94A48;

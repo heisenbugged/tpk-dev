@@ -1,1 +1,3 @@
-= f.input :skill_name, :label => false, input_html: { data: { autocomplete_source: skills_path } }
+.nested-fields
+  = f.input :skill_name, :label => false, input_html: { data: { autocomplete_source: skills_path } }
+  = link_to_remove_association "x", f, :class => "remove"

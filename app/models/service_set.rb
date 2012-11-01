@@ -1,5 +1,7 @@
 class ServiceSet < ActiveRecord::Base
-  attr_accessible :it_service_id, :affiliate_id, :service_name
+  attr_accessible :it_service_id, :affiliate_id, :service_name, :_destroy
+  attr_accessor :_destroy
+  
   belongs_to :affiliate
   belongs_to :it_service
   

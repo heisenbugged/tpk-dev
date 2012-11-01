@@ -8,13 +8,13 @@ class AffiliatesController < ApplicationController
   end
   
   def edit
-    @affiliate = Affiliate.find params["id"]    
+    @affiliate = Affiliate.find params[:id]    
     @page_title = "Editing Affiliate " + @affiliate.company_name
     build_nested_attributes @affiliate
   end
   
   def create
-    @affiliate = Affiliate.new(params[:affiliate])
+    @affiliate = Affiliate.new params[:affiliate]
     
     if @affiliate.save
       redirect_to root_url, :notice => "You have successfully signed up."
@@ -24,12 +24,31 @@ class AffiliatesController < ApplicationController
     end
   end
   
+  def update
+    @affiliate = Affiliate.find params[:id]
+    if @affiliate.update_attributes params[:affiliate]
+      redirect_to root_url, :notice => "You have updated your account information successfully."
+    else
+      build_nested_attributes @affiliate
+      render 'edit'
+    end    
+  end
+  
+  def accept
+    @affiliate = Affiliate.find params[:id]
+    if @affiliate.accept
+      redirect_to admin_dashboard_path, :notice => "Affiliate updated successfully."
+    else
+      redirect_to admin_dashboard_path, :alert => "We couldn't update this affiliate."
+    end
+  end
+  
 private
   def build_nested_attributes affiliate
-    affiliate.addresses.build if affiliate.addresses.blank?
+    affiliate.addresses.build      if affiliate.addresses.blank?
     affiliate.certifications.build if affiliate.certifications.blank?    
-    affiliate.service_sets.build if affiliate.service_sets.blank?
-    affiliate.skill_sets.build if affiliate.skill_sets.blank?
+    affiliate.service_sets.build   if affiliate.service_sets.blank?
+    affiliate.skill_sets.build     if affiliate.skill_sets.blank?
     
     phones = []
     ph_types = @affiliate.phones.map(&:ph_type)

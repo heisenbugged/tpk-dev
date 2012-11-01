@@ -7,15 +7,17 @@ TpkDev::Application.routes.draw do
      get "/users/confirmation_setup" => "registrations#setup", :as => :user_setup
      put "/users/confirmation_setup" => "registrations#finish_setup", :as => :user_setup     
   end  
-  
+    
   ActiveAdmin.routes(self)  
   
   root :to => "problem_requests#new"
   resources :problem_requests
   resources :affiliates
+  match "/affiliates/:id/accept" => "affiliates#accept", :as => :accept_affiliate
   resources :certificates
   resources :skills
   resources :it_services
+  match "/dashboard" => "dashboard#index"
   match "/mission_statement" => "home#mission_statement"
 
   

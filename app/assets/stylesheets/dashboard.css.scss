@@ -1,0 +1,43 @@
+.dashboard-container {
+  width: 830px;
+  margin: 0 auto;
+  background: white;
+  
+  .header {
+    background: url("dashboard-header.png");
+    height: 44px;
+    line-height: 44px;
+    color: white;
+    font-family: $title-font;
+    font-size: 18px;
+    padding: 0 15px;
+    @include box-shadow(0 4px 4px 0px rgba(0, 0, 0, 0.15));
+    border-top: #1d1d20 1px solid;
+    margin-bottom: 15px;
+  }  
+  
+  .content {
+    padding: 0 30px;
+    
+    h3.availability {
+      font-weight: 600;
+      font-size: 18px;
+      float: left;
+      margin-right: 25px;
+    }
+    
+    ul.days-of-week {
+      @include clearfix;
+      li { 
+        border-left: #f2f2f2 1px solid;
+        float: left; 
+        text-align: center;
+        padding: 10px 19px;
+        font-size: 18px;
+        font-family: $title-font;
+        color: #51525c;
+      }
+    }
+  }
+  
+}

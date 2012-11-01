@@ -1,5 +1,7 @@
 class SkillSet < ActiveRecord::Base
-  attr_accessible :skill_id, :affiliate_id, :skill_name
+  attr_accessible :skill_id, :affiliate_id, :skill_name, :_destroy
+  attr_accessor :_destroy
+  
   belongs_to :affiliate
   belongs_to :skill
   

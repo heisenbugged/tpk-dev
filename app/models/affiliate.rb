@@ -4,21 +4,24 @@ class Affiliate < ActiveRecord::Base
   has_many :addresses, :as => :addressable, :dependent => :destroy
   has_many :phones, :as => :phoneable, :dependent => :destroy  
   
-  has_many :certifications
+  has_many :certifications, :dependent => :nullify
   has_many :certificates, :through => :certifications
+  has_many :certificates_skills, :through => :certificates, :source => :skills
   
-  has_many :skill_sets
+  has_many :skill_sets, :dependent => :nullify
   has_many :skills, :through => :skill_sets
   
-  has_many :service_sets
+  has_many :service_sets, :dependent => :nullify
   has_many :it_services, :through => :service_sets
+  has_many :it_services_skills, :through => :it_services, :source => :skills
   
+  has_one :user
   
-  accepts_nested_attributes_for :certifications
-  accepts_nested_attributes_for :service_sets
-  accepts_nested_attributes_for :skill_sets
-  accepts_nested_attributes_for :phones, :reject_if => lambda { |p| !Phone.new(p).valid? }
-  accepts_nested_attributes_for :addresses, :reject_if => lambda { |a| !Address.new(a).valid? }
+  accepts_nested_attributes_for :certifications, :allow_destroy => true, :reject_if => lambda { |c| Certification.new(c).cert_name.blank? }
+  accepts_nested_attributes_for :service_sets,   :allow_destroy => true, :reject_if => lambda { |s| ServiceSet.new(s).service_name.blank? }
+  accepts_nested_attributes_for :skill_sets,     :allow_destroy => true, :reject_if => lambda { |s| SkillSet.new(s).skill_name.blank? }
+  accepts_nested_attributes_for :phones,         :allow_destroy => true, :reject_if => lambda { |p| !Phone.new(p).valid? }
+  accepts_nested_attributes_for :addresses,      :allow_destroy => true, :reject_if => lambda { |a| !Address.new(a).valid? }
     
   attr_accessible :company_name, :first_name, :last_name, :bonded, :certifications, :service_sets, :skill_sets,
                   :website_url, :bonded, :email, :logo, :logo_cache
@@ -27,10 +30,10 @@ class Affiliate < ActiveRecord::Base
   # or an administrator creates. Any suspensions issued by an administrator
   # take precedence over user states.
   #   
-  #   Active (default) - means everything is fine and affiliate is active in the system.
-  #   Suspended        - means we've suspended them for some reason.
-  #   Pending          - means something prevents us from making them live such as missing information
-  #   On Hold          - not suspended, but just on hold (e.g., on vacation)
+  #   active (default) - means everything is fine and affiliate is active in the system.
+  #   suspended        - means we've suspended them for some reason.
+  #   pending          - means something prevents us from making them live such as missing information
+  #   on_hold          - not suspended, but just on hold (e.g., on vacation)
   attr_accessible :state
   
   attr_accessible :certifications_attributes, :service_sets_attributes, :skill_sets_attributes, 
@@ -39,10 +42,28 @@ class Affiliate < ActiveRecord::Base
   mount_uploader :logo, LogoUploader
   
   validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :if => lambda { !email.blank? }
-  validates_presence_of :company_name, :website_url, :addresses
+  validates_presence_of :company_name, :addresses, :first_name, :last_name, :email
   validate :has_skill?, :on => :create
-  #validate :has_address?, :on => :create
   validate :has_phone_or_email?, :on => :create
+  
+  # Accepts and validates affiliate for use in system.
+  # Creates User account to manage the newly accepted affiliate account.
+  def accept    
+    # Create user with completely random password, which will then be updated
+    # by the user when he receives his email.
+    pwd = (0...25).map{ ('a'..'z').to_a[rand(26)] }.join
+    
+    transaction do
+      self.state = "active"
+      self.user = User.new(:email => self.email, :password => pwd)      
+      self.save
+    end
+    true
+    
+  # Return false if transaction fails
+  rescue ActiveRecord::RecordInvalid => invalid
+    false
+  end
   
   # Finds overlap between all the skills for this affiliate
   # and all the skills for the problem request passed in.
@@ -56,7 +77,7 @@ class Affiliate < ActiveRecord::Base
   end
   
   def all_skills
-    Skill.find(all_skill_ids)
+    [skills, certificates_skills, it_services_skills].flatten.uniq
   end
   
   def all_skill_ids
@@ -64,24 +85,20 @@ class Affiliate < ActiveRecord::Base
   end
   
   def certificate_skill_ids
-    Skill.joins(:certificates => :certifications).where(:certifications => {:affiliate_id => self.id}).select("skills.id").map(&:id)
+    certificates_skills.select("skills.id").map(&:id)
   end
   
   def service_skill_ids
-    Skill.joins(:it_services => :service_sets).where(:service_sets => {:affiliate_id => self.id}).select("skills.id").map(&:id)
+    it_services_skills.select("skills.id").map(&:id)
   end  
   
   
 private
   def has_phone_or_email?
-    if email.blank? && phones.blank?
+    if email.blank? && phones.any? {|p| p.ph_type == "Mobile" || p.ph_type == "Landline" }
       errors[:base] << "You must enter at least one phone number or an email address"
     end
   end
-  
-  #def has_address?
-  #  errors[:base] << "You must enter an address with a street, city and state." if self.addresses.blank?
-  #end
     
   # Validate the affiliate has at least one cert, service or skill.
   def has_skill?

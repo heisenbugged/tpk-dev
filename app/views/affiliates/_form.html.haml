@@ -32,7 +32,7 @@
       = f.input :last_name
       = f.input :email, :as => :string
       = f.simple_fields_for :phones do |phone|
-        = phone.input :number, :label => phone.object.ph_type
+        = phone.input :number, :label => phone.object.ph_type, :required => false
         = phone.input :ph_type, :as => :hidden
     
   .associations.clearfix            

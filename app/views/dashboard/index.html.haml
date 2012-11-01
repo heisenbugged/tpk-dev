@@ -1,0 +1,11 @@
+.dashboard-container
+  .header Welcome back, #{@affiliate.company_name}!
+  
+  .content
+    %h3.availability Manage your Availability
+    %ul.days-of-week
+      - Date::DAYNAMES.each do |day|
+        %li
+          = day[0,3]
+          %br/
+          = check_box_tag "", ""

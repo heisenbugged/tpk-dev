@@ -11,8 +11,9 @@ ActiveAdmin.register Affiliate do
     end
     
     column "" do |affiliate|
-      link_to "Edit (Active Admin)", edit_admin_affiliate_path(affiliate)
+      link_to "Accept", accept_affiliate_path(affiliate)
     end
+  
   end
   
   

@@ -204,11 +204,6 @@
 }
 
 
-span.error {
-  @include error;
-  font-size: 13px;
-}
-
 .service-providers {
   border-top: 1px solid #ececec;
   padding: 20px;

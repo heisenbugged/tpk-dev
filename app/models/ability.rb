@@ -29,8 +29,10 @@ class Ability
     can :create, ProblemRequest
     can :read, ProblemRequest
     
-    if user
+    if user.admin?
       can :manage, :all
+    elsif user
+      can :read, :dashboard
     end    
   end
 end
