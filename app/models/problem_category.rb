@@ -1,4 +1,6 @@
 class ProblemCategory < ActiveRecord::Base
+  default_scope order('category_name asc')
+  
   attr_accessible :category_name, :css_class
   
   def name
