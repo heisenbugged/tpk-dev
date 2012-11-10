@@ -12,11 +12,14 @@ TpkDev::Application.routes.draw do
   
   root :to => "problem_requests#new"
   resources :problem_requests
+  
   resources :affiliates
   match "/affiliates/:id/accept" => "affiliates#accept", :as => :accept_affiliate
+  
   resources :certificates
   resources :skills
   resources :it_services
+  resources :week_availabilities, :only => [:update]
   match "/dashboard" => "dashboard#index"
   match "/mission_statement" => "home#mission_statement"
 

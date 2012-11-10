@@ -1,17 +1,5 @@
 ActiveAdmin.register Certificate do
-  
-  form do |f|
-    f.buttons        
-    f.inputs "Details" do
-      f.input :name
-    end
-    
-    f.inputs do        
-      f.input :skills, :collection => Skill.all.map { |skill| [skill.name, skill.id] }, :as => :check_boxes
-    end
-    
-    f.buttons
-  end
+  form :partial => "form"
 
   show  do
     attributes_table :name, :created_at, :updated_at

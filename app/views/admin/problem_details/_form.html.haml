@@ -1,0 +1,17 @@
+- detail_skills = @problem_detail.skills.map(&:id)
+= semantic_form_for [:admin, @problem_detail] do |f|
+  = f.buttons
+  = f.inputs "Details" do
+    = f.input :name
+  
+  = f.inputs do
+    = f.input :problem_category, :collection => ProblemCategory.all.map { |skill| [skill.name, skill.id] }
+    
+  = f.inputs "Skills" do
+    %ol.choices-group
+      - Skill.all.each do |skill|
+        %li.choice
+          = check_box_tag 'problem_detail[skill_ids][]', skill.id, detail_skills.any? { |id| id == skill.id }
+          = skill.name
+              
+  = f.buttons

@@ -5,7 +5,16 @@
     %h3.availability Manage your Availability
     %ul.days-of-week
       - Date::DAYNAMES.each do |day|
+        - week_availability = current_user.affiliate.week_availability
         %li
-          = day[0,3]
+          = day[0,3] #, week_availability_path(week_availability), remote: true, method: "POST"
           %br/
-          = check_box_tag "", ""
+          = check_box_tag "", day.downcase, week_availability.available?(day), class: "affiliate-checkbox", :'data-id' => week_availability.id
+
+:javascript
+
+  $(document).ready(function() {
+    $(".affiliate-checkbox").change(function() {
+      $.post("/week_availabilities/" + $(this).data('id'), { _method: 'PUT', day: $(this).val() });
+    });
+  });

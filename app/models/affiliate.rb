@@ -16,6 +16,7 @@ class Affiliate < ActiveRecord::Base
   has_many :it_services_skills, :through => :it_services, :source => :skills
   
   has_one :user
+  has_one :week_availability
   
   accepts_nested_attributes_for :certifications, :allow_destroy => true, :reject_if => lambda { |c| Certification.new(c).cert_name.blank? }
   accepts_nested_attributes_for :service_sets,   :allow_destroy => true, :reject_if => lambda { |s| ServiceSet.new(s).service_name.blank? }
@@ -46,6 +47,9 @@ class Affiliate < ActiveRecord::Base
   validate :has_skill?, :on => :create
   validate :has_phone_or_email?, :on => :create
   
+  # Must create
+  before_save :add_week_availability
+  
   # Accepts and validates affiliate for use in system.
   # Creates User account to manage the newly accepted affiliate account.
   def accept    
@@ -55,7 +59,7 @@ class Affiliate < ActiveRecord::Base
     
     transaction do
       self.state = "active"
-      self.user = User.new(:email => self.email, :password => pwd)      
+      self.user = User.find_or_initialize_by_email(:email => self.email, :password => pwd)
       self.save
     end
     true
@@ -94,6 +98,12 @@ class Affiliate < ActiveRecord::Base
   
   
 private
+  # Creates stub week availability model if one doesn't exist already.
+  def add_week_availability
+    return if self.week_availability
+    self.week_availability = WeekAvailability.create
+  end
+  
   def has_phone_or_email?
     if email.blank? && phones.any? {|p| p.ph_type == "Mobile" || p.ph_type == "Landline" }
       errors[:base] << "You must enter at least one phone number or an email address"

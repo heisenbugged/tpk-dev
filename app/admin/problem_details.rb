@@ -1,5 +1,7 @@
 ActiveAdmin.register ProblemDetail do
-
+  form :partial => "form"
+  
+=begin
   form do |f|
     f.buttons        
     f.inputs "Details" do
@@ -16,6 +18,7 @@ ActiveAdmin.register ProblemDetail do
     
     f.buttons
   end
+=end
 
   show  do
     attributes_table :name, :created_at, :updated_at, :problem_category

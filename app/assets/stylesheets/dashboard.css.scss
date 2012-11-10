@@ -16,28 +16,64 @@
     margin-bottom: 15px;
   }  
   
-  .content {
-    padding: 0 30px;
-    
-    h3.availability {
-      font-weight: 600;
+  .content { padding: 0 30px; }     
+  h3.availability {
+    font-weight: 600;
+    font-size: 18px;
+    float: left;
+    margin-right: 30px;
+    margin-top: 25px;
+    color: #444;
+  }
+  
+  ul.days-of-week {
+    @include clearfix;
+    li { 
+      border-left: #f2f2f2 1px solid;
+      float: left; 
+      text-align: center;
+      padding: 10px 19px;
       font-size: 18px;
-      float: left;
-      margin-right: 25px;
+      font-family: $title-font;
+      color: #51525c;
     }
-    
-    ul.days-of-week {
-      @include clearfix;
-      li { 
-        border-left: #f2f2f2 1px solid;
-        float: left; 
-        text-align: center;
-        padding: 10px 19px;
-        font-size: 18px;
-        font-family: $title-font;
-        color: #51525c;
-      }
-    }
+  }
+  
+  input[type='checkbox'] { margin-top: 10px; }
+}
+
+input[type='checkbox'] {
+  -webkit-appearance: none;
+  background-color: #fafafa;
+  border: 1px solid #cacece;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+  padding: 8px;
+  border-radius: 3px;
+  display: inline-block;
+  position: relative;
+  
+  &:hover {
+    border: 1px solid darken(#cacece, 15);
+  }
+  
+  &:active, &:checked:active {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+  }
+  
+  &:checked {
+      background-color: #e9ecee;
+      border: 1px solid #adb8c0;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+      color: #99a1a7;
+  }
+
+  &:checked:after {
+      content: '\2714';
+      font-size: 14px;
+      position: absolute;
+      top: 0px;
+      left: 3px;
+      color: #99a1a7;
   }
   
 }

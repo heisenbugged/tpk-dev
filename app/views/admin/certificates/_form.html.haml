@@ -1,0 +1,14 @@
+- cert_skills = @certificate.skills.map(&:id)
+= semantic_form_for [:admin, @certificate] do |f|
+  = f.buttons
+  = f.inputs "Details" do
+    = f.input :name
+    
+  = f.inputs "Skills" do
+    %ol.choices-group
+      - Skill.all.each do |skill|
+        %li.choice
+          = check_box_tag 'certificate[skill_ids][]', skill.id, cert_skills.any? { |id| id == skill.id }
+          = skill.name
+              
+  = f.buttons
