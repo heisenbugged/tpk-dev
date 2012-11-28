@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121031023017) do
+ActiveRecord::Schema.define(:version => 20121126045756) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -61,8 +61,10 @@ ActiveRecord::Schema.define(:version => 20121031023017) do
 
   create_table "certificates", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.text     "description"
+    t.boolean  "approved",    :default => false
   end
 
   create_table "certificates_skills", :id => false, :force => true do |t|
@@ -131,8 +133,10 @@ ActiveRecord::Schema.define(:version => 20121031023017) do
   create_table "problem_details", :force => true do |t|
     t.string   "name"
     t.integer  "problem_category_id"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
+    t.text     "description"
+    t.boolean  "approved",            :default => true
   end
 
   add_index "problem_details", ["problem_category_id"], :name => "index_problem_details_on_problem_category_id"

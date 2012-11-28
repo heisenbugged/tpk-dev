@@ -10,8 +10,12 @@
           %h1= category.name
       
         .problem-detail-list.clearfix
-          = f.association :details, :collection  => category.problem_details, :label => false, :as => :check_boxes
-  
-    = f.input :description, :label => "Please Enter a Quick Description of your problem(s)."
+          = f.association :details, :collection  => category.problem_details.approved, :label => false, :as => :check_boxes
+          .clr
+          <br /><br />
+          = f.simple_fields_for "others[]", @problem_request.other_for_category(category) do |p|
+            = p.hidden_field :problem_category_id
+            = p.input :description, :label => "Other (please specify):"
+              
     
     = render 'submits', :f => f

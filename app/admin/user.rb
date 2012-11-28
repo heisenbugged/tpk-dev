@@ -10,7 +10,7 @@ ActiveAdmin.register User do
   end
 
   create_or_edit = Proc.new {
-    @user            = User.find_or_create_by_id(params[:id])
+    @user = User.find_or_create_by_id(params[:id])
     @user.admin = params[:user][:admin]
     @user.attributes = params[:user].delete_if do |k, v| 
       (k == "admin") ||

@@ -40,18 +40,11 @@ span.error {
   
 }
 
-
 body {
   background: #e4e4e4;
   font-size: 14px;
   font-family: $body-font;
   color: #333;
-}
-
-b { font-weight: bold; }
-
-p {
-  line-height: 19px;
 }
 
 h1 {
@@ -78,39 +71,22 @@ h2.bold {
   color: #565656; 
 }
 
-.center {
-  text-align: center;
-}
-
-.bold {
-  font-weight: 600;
-}
-
-.yellow {
-  color: #f5c106;
-}
-
-.red {
-  color: #ff6a6f;
-}
-
-.dark-red {
-  color: #B62227;
-}
-
-.orange {
-  color: #ed8f09;
-}
-
-.centered {
-  text-align: center;
-}
+b { font-weight: bold; }
+p { line-height: 19px; }
+.center, .centered { text-align: center; }
+.clr { clear: both; }
+.bold { font-weight: 600; }
+.yellow { color: #f5c106; }
+.red { color: #ff6a6f; }
+.dark-red { color: #B62227; }
+.orange { color: #ed8f09; }
 
 .whitebox {
   padding: 25px;
   background: white;
   border-radius: 10px;
 }
+
 
 fieldset {
   border: 1px solid #ccc;
@@ -275,3 +251,7 @@ fieldset {
   }
 }
 
+label.checkbox input {
+  vertical-align: middle;
+  margin-right: 10px;
+}

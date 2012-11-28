@@ -3,9 +3,8 @@
   = f.buttons
   = f.inputs "Details" do
     = f.input :name
-  
-  = f.inputs do
     = f.input :problem_category, :collection => ProblemCategory.all.map { |skill| [skill.name, skill.id] }
+    = f.input :approved    
     
   = f.inputs "Skills" do
     %ol.choices-group

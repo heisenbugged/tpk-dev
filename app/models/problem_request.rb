@@ -1,7 +1,7 @@
 class ProblemRequest < ActiveRecord::Base
   attr_accessible :description, :category_ids, :detail_ids,
                   :full_name, :email, :phone, :zip,
-                  :address, :address_attributes
+                  :address, :address_attributes, :others
   
   
   has_and_belongs_to_many :categories, :class_name => "ProblemCategory"
@@ -22,6 +22,25 @@ class ProblemRequest < ActiveRecord::Base
   
   geocoded_by :zip
   after_validation :geocode, :if => :zip_changed?
+  
+  def other_for_category(category)
+    details.find { |d| d.name == "#{d.category.category_name} -- Other" } || category.problem_details.build
+  end
+  
+  # Virtual attribute for creating "Other" problem details to be reviewed from a problem request.
+  def others= arr
+    # Reject all empty other models
+    arr.reject! {|other| other[:name].blank? && other[:description].blank? }
+    
+    # Associate to problem request.
+    arr.each do |other|
+      detail = ProblemDetail.new other
+      detail.name = "#{detail.category.category_name} -- Other"
+      # Other problem details need to be approved by administrators before they are used.
+      detail.approved = false
+      details << detail
+    end
+  end
   
   def skill_ids
     Skill.joins(:problem_details).where("problem_details_skills.problem_detail_id in (?)", detail_ids).select("skills.id").map(&:id)
@@ -67,8 +86,8 @@ class ProblemRequest < ActiveRecord::Base
   end
   #== end functions for multi-step form support.
   
-  private
-    def has_detail?
-      errors[:base] << "Please specify at least one problem detail to continue." if detail_ids.blank?
-    end
+private
+  def has_detail?
+    errors[:base] << "Please specify at least one problem detail to continue." if detail_ids.blank?
+  end
 end

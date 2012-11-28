@@ -59,7 +59,7 @@ private
   def load_categories(problem_request)
     if problem_request.first_step?
       session[:problem_request_params].delete "category_ids"
-      ProblemCategory.all
+      ProblemCategory.joins(:problem_details).where("problem_details.problem_category_id IS NOT NULL").group(:id)
     else
       problem_request.categories
     end

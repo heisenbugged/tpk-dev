@@ -1,4 +1,6 @@
 ActiveAdmin.register Certificate do
+  controller { with_role :admin }
+  
   form :partial => "form"
 
   show  do
