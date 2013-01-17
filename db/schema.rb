@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121126045756) do
+ActiveRecord::Schema.define(:version => 20130106005850) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -49,12 +49,13 @@ ActiveRecord::Schema.define(:version => 20121126045756) do
     t.string   "first_name"
     t.string   "last_name"
     t.boolean  "bonded"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
     t.string   "website_url"
     t.string   "logo"
-    t.string   "state",        :default => "pending"
+    t.string   "state",          :default => "pending"
     t.string   "email"
+    t.boolean  "allows_virtual", :default => false
   end
 
   add_index "affiliates", ["state"], :name => "index_affiliates_on_state"
@@ -167,6 +168,7 @@ ActiveRecord::Schema.define(:version => 20121126045756) do
     t.float    "longitude"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "address_id"
   end
 
   create_table "referrals", :force => true do |t|
@@ -212,8 +214,9 @@ ActiveRecord::Schema.define(:version => 20121126045756) do
   create_table "skills", :force => true do |t|
     t.string   "name"
     t.string   "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "is_virtual",  :default => false
   end
 
   create_table "users", :force => true do |t|

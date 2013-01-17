@@ -1,12 +1,14 @@
-class ProblemRequest < ActiveRecord::Base
-  attr_accessible :description, :category_ids, :detail_ids,
-                  :full_name, :email, :phone, :zip,
-                  :address, :address_attributes, :others
+class ProblemRequest < ActiveRecord::Base  
   
-  
+  has_one :address, :as => :addressable
   has_and_belongs_to_many :categories, :class_name => "ProblemCategory"
   has_and_belongs_to_many :details, :class_name => "ProblemDetail"
-
+  
+  accepts_nested_attributes_for :address, :allow_destroy => true, :reject_if => lambda { |a| !Address.new(a).valid? }
+  
+  attr_accessible :description, :category_ids, :detail_ids, :full_name, 
+                  :email, :phone, :address, :address_attributes, :others, :is_virtual
+                  
   with_options :if => lambda { |o| o.current_step == "form" } do |o|
     o.validate :has_detail?
   end
@@ -16,13 +18,13 @@ class ProblemRequest < ActiveRecord::Base
   end
   
   with_options :if => lambda { |o| o.current_step == "info" } do |o|
-    o.validates_presence_of :full_name, :zip
+    o.validates_presence_of :full_name, :address
     o.validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
   end
   
-  geocoded_by :zip
-  after_validation :geocode, :if => :zip_changed?
-  
+  #geocoded_by :address
+  #after_validation :geocode, :if => :address_changed?
+
   def other_for_category(category)
     details.find { |d| d.name == "#{d.category.category_name} -- Other" } || category.problem_details.build
   end
@@ -52,7 +54,7 @@ class ProblemRequest < ActiveRecord::Base
   end
   
   def coordinates
-    [latitude, longitude]
+    [address.latitude, address.longitude] if address
   end
     
   # == functions for multi-step form support.
@@ -86,7 +88,7 @@ class ProblemRequest < ActiveRecord::Base
   end
   #== end functions for multi-step form support.
   
-private
+private  
   def has_detail?
     errors[:base] << "Please specify at least one problem detail to continue." if detail_ids.blank?
   end

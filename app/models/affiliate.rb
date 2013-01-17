@@ -25,8 +25,8 @@ class Affiliate < ActiveRecord::Base
   accepts_nested_attributes_for :addresses,      :allow_destroy => true, :reject_if => lambda { |a| !Address.new(a).valid? }
     
   attr_accessible :company_name, :first_name, :last_name, :bonded, :certifications, :service_sets, :skill_sets,
-                  :website_url, :bonded, :email, :logo, :logo_cache
-  
+                  :website_url, :bonded, :email, :logo, :logo_cache, :allows_virtual
+                
   # State of current affiliate, based on a suspension the users create
   # or an administrator creates. Any suspensions issued by an administrator
   # take precedence over user states.
@@ -76,10 +76,14 @@ class Affiliate < ActiveRecord::Base
   end
   
   # Scoring algorithm for determining sort order of affiliates for a problem request.
-  def score problem_request
+  def score problem_request  
     (all_skill_ids & problem_request.skill_ids).count
   end
   
+  def self.join_skills
+    joins{[skills.outer, certificates_skills.outer, it_services_skills.outer]}
+  end
+
   def all_skills
     [skills, certificates_skills, it_services_skills].flatten.uniq
   end

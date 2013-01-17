@@ -7,6 +7,16 @@
       = f.input :full_name
       = f.input :email
       = f.input :phone
-      = f.input :zip, :as => :string
-    
+      
+      %p.provide-address 
+        Please provide your address so we can find the best service providers in your region.
+        (only zip is required)
+      
+      .address-fields  
+        = f.simple_fields_for :address, @problem_request.build_address do |address|
+          = address.input :street_line_1, :label => "Street:"
+          = address.input :city, :wrapper => false, :input_html => { :class => "city" }
+          = address.input :state, :wrapper => false, :input_html => { :class => "state" }
+          = address.input :zip, :wrapper => false, :as => :string, :input_html => { :class => "zip" }
+              
     = render 'submits', :f => f, :next_label => "Done"

@@ -1,9 +1,9 @@
 .whitebox
-  %h2.center We've found <span class="bold dark-red">#{@addresses.count} service providers</span> for you!
+  %h2.center We've found <span class="bold dark-red">#{@affiliates.count} service providers</span> for you!
   
   .service-providers
-    - @addresses.each do |address|
-      - affiliate = address.addressable
+    - @affiliates.each do |affiliate|
+      - address = affiliate.addresses.first
       .service-provider
         - if affiliate.logo_url
           = image_tag affiliate.logo_url(:thumb)

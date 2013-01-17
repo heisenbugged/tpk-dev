@@ -1,5 +1,5 @@
 class Skill < ActiveRecord::Base
-  default_scope order('name asc')
+  default_scope order('skills.name asc')
   
   attr_accessible :description, :name
   

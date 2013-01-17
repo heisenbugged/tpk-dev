@@ -9,14 +9,13 @@
     </div>
   
   <h1 style="font-size: 26px; font-weight: 300; text-align: center; margin-bottom: 25px;">
-    We've found <span style="font-weight: bold; color: #B62227;"><%= @addresses.count %> service providers</span> for you!
+    We've found <span style="font-weight: bold; color: #B62227;"><%= @affiliates.count %> service providers</span> for you!
   </h1>
-  
-  
+    
   <div style='border-top: 1px solid #ccc; padding: 20px;'>
-    <% @addresses.each do |address| %>
-      <% affiliate = address.addressable %>
-      <% next if affiliate.state != :active %>
+    <% @affiliates.each do |affiliate| %>
+      <% address = affiliate.addresses.first %>
+      <% next if affiliate.state != "active" %>
       <div style="padding: 20px;">
         <% if affiliate.logo_url %>
           <%= image_tag affiliate.logo_url(:thumb) %>

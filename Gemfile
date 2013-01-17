@@ -1,11 +1,9 @@
 source 'https://rubygems.org'
 
+# Core gems.
 gem 'rails', '3.2.3'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'mysql2'
+gem 'jquery-rails'
 
 # Form gems.
 gem "simple_form"
@@ -23,7 +21,9 @@ gem "guard"
 gem "guard-spork"
 gem "faker"
 
-gem "pry", :group => :development
+# Mail gems.
+gem "letter_opener", :group => :development
+# gem "roadie"
 
 gem "carrierwave"
 gem "mini_magick"
@@ -34,6 +34,8 @@ gem "devise"
 gem "cancan"
 gem 'resque', :require => "resque/server"
 gem "activeadmin"
+gem "pry", :group => :development
+gem "squeel"
 
 # Mute rails pipeline asset log
 gem 'quiet_assets', :group => :development
@@ -48,20 +50,8 @@ end
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platform => :ruby
-
   gem 'uglifier', '>= 1.0.3'
 end
-
-gem 'jquery-rails'
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
 
 # Use unicorn as the app server
 gem 'unicorn'
@@ -69,5 +59,3 @@ gem 'unicorn'
 # Deploy with Capistrano
 gem 'capistrano'
 
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
